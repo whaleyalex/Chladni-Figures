@@ -15,7 +15,7 @@ float dy;  // Value for incrementing Y, a function of period and yspacing
 float[] xvalues;  // Using an array to store height values for the wave
 
 void setup() {
-  size(512, 512);
+  size(600, 600);
   h = height+16;
   dy = (TWO_PI / period) * yspacing;
   xvalues = new float[h/yspacing];
