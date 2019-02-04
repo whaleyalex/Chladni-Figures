@@ -2,7 +2,7 @@ PGraphics pg;
 int dim = 512; //dimension for width and height
 
 //Chladni Figure 1
-///*
+/*
 int yspacing = 1; //How far apart each vertical position should be
 int h; // height of the entire wave
 
@@ -15,7 +15,13 @@ float xoff = 0.0; //noise for the amplitude of the wave
 float maxAmplitude = 40; //max height for the wave
 
 float colNoise = 0.1;
-//*/
+*/
+
+//Chladni Figure 2
+/*
+float colNoise =  0.1;
+float var = 20; //pixels for bezier control
+*/
 
 //Chladni Figure 89
 /* 
@@ -58,7 +64,84 @@ float yoff = 0.0; //noise for the amplitude of the wave
 float maxAmplitude = 50; //max height for the wave
 
 int spacing = 60; //pixel spacing value for wave placement
+
+float colNoise = 0.1; //color noise
 */
+
+//Chladni Figure 108
+/*
+int xspacing = 2; //how far apart for horizontal locations (wave fidelity)
+int w; //width of the wave
+float theta = 0.0; //start angle at 0
+//float amplitude = 75.0; //for a static amplitude
+float period; //pixels before wave repeats
+float dx; //Value for incrementing X, a function of period and xspacing
+float[] yvalues; //An array to store the height values for the wave
+
+float yoff = 0.0; //noise for the amplitude of the wave
+float maxAmplitude = 50; //max height for the wave
+
+int spacing = 60; //pixel spacing value for wave placement
+
+float colNoise = 0.1; //color noise
+*/
+
+//Chladni Figure 113
+/*
+int xspacing = 2; //how far apart for horizontal locations (wave fidelity)
+int w; //width of the wave
+float theta = 0.0; //start angle at 0
+//float amplitude = 75.0; //for a static amplitude
+float period; //pixels before wave repeats
+float dx; //Value for incrementing X, a function of period and xspacing
+float[] yvalues; //An array to store the height values for the wave
+
+float yoff = 0.0; //noise for the amplitude of the wave
+float maxAmplitude = 50; //max height for the wave
+
+int spacing = 105; //pixel spacing value for wave placement
+
+float colNoise = 0.1; //color noise
+*/
+
+//Chladni Figure 130
+/*
+int xspacing = 2; //how far apart for horizontal locations (wave fidelity)
+int w; //width of the wave
+float theta = 0.0; //start angle at 0
+//float amplitude = 75.0; //for a static amplitude
+float period; //pixels before wave repeats
+float dx; //Value for incrementing X, a function of period and xspacing
+float[] yvalues; //An array to store the height values for the wave
+
+float yoff = 0.0; //noise for the amplitude of the wave
+float maxAmplitude = 30; //max height for the wave
+
+int spacing = 40; //pixel spacing value for wave placement
+
+float colNoise = 0.1; //color noise
+*/
+
+//Chladni Figure 139
+///*
+int xspacing = 2; //how far apart for horizontal locations (wave fidelity)
+int w; //width of the wave
+float theta = 0.0; //start angle at 0
+//float amplitude = 75.0; //for a static amplitude
+float period; //pixels before wave repeats
+float dx; //Value for incrementing X, a function of period and xspacing
+float[] yvalues; //An array to store the height values for the wave
+
+float yoff = 0.0; //noise for the amplitude of the wave
+float maxAmplitude = 50; //max height for the wave
+
+int spacing = 60; //pixel spacing value for wave placement
+
+float colNoise = 0.1; //color noise
+
+float maxPix = 30; //max num pixels line moves up and down
+float heightNoise = 0.0; // noise variable for height up and down curve moves
+//*/
 
 void setup() {
   size(512, 512, P3D);
@@ -66,11 +149,16 @@ void setup() {
   textureMode(NORMAL);
   
   //Chladni Figure 1
-  ///*
+  /*
   h = height;
   period = height*2;
   dy = (TWO_PI / period) * yspacing;
   xvalues = new float[h/yspacing];
+  */
+  
+  //Chladni Figure 2
+  ///*
+  
   //*/
   
   //Chladni Figure 89
@@ -87,25 +175,71 @@ void setup() {
   yvalues = new float[width/xspacing];
   */
   
-  //Chladni Figure 106
-  /*
+  //Chladni Figure 106, 108, 139
+  ///*
   period = width * 0.6667;
   
   dx = (TWO_PI / period) * xspacing;
   yvalues = new float[width/xspacing];
-  */
+  //*/
   
+  //Chladni Figure 113, 130
+  /*
+  period = width * 0.4;
+  
+  dx = (TWO_PI / period) * xspacing;
+  yvalues = new float[width/xspacing];
+  */
+    
   //frameRate(24);
 }
+
+
+
+
 
 void draw() {
   pg.beginDraw();
   
   //Chladni Figure 1
-  ///*
+  /*
   calcWave();
   renderWave();
-  //*/
+  */
+  
+  //Chladni Figure 2
+  /*
+  pg.colorMode(HSB,360,100,100);
+  float col = map(noise(colNoise), 0, 1, 0, 360);
+  
+  pg.background(col, 100, 100);
+  pg.noStroke();
+  
+  pg.fill(360-col, 100, 100);
+  pg.ellipse(width/2,height/2,width,height);
+  
+  pg.noFill();
+  pg.stroke(0);
+  pg.strokeWeight(2);
+  pg.beginShape();
+  pg.curveVertex(0,height/2);
+  pg.curveVertex(0,height/2);
+  pg.curveVertex(width/2-var,height/2-var);
+  pg.curveVertex(width/2,0);
+  pg.curveVertex(width/2,0);
+  pg.endShape();
+  
+  pg.fill(0);
+  pg.beginShape();
+  pg.rect(0,0,width,height);
+  pg.beginContour();
+  pg.fill(255);
+  pg.ellipse(width/2,height/2,width,height);
+  pg.endContour();
+  pg.endShape();
+  
+  colNoise += 0.01;
+  */
   
   //Chladni Figure 89
   /*
@@ -123,18 +257,11 @@ void draw() {
   dimNoise += 0.01;
   */
   
-  //Chladni Figure 94
-  /*  
+  //Chladni Figure 94, 106, 108, 113, 130, 139
+  ///*  
   calcWave();
   renderWave();
-  */
-  
-  //Chladni Figure 106
-  /*
-  pg.background(0);
-  calcWave();
-  renderWave();
-  */
+  //*/
   
   pg.endDraw();
   
@@ -148,9 +275,15 @@ void draw() {
   endShape(CLOSE);
 }
 
+
+
+
+
+
+
 void calcWave() {
   //Chladni Figure 1
-  ///*
+  /*
   //theta += 0.02; //angular velocity
   theta = 0.0; //no movement
   
@@ -163,7 +296,7 @@ void calcWave() {
     xvalues[i] = sin(y)*f;
     y+=dy;
   }
-  //*/
+  */
   
   //Chladni Figure 94
   /*
@@ -197,11 +330,84 @@ void calcWave() {
     x+=dx;
   }
   */
+  
+  //Chladni Figure 108
+  /*
+  //theta += 0.02; //incrememnt theta for different values of 'angular velocity'
+  theta = 0.0; //noMovement\
+  
+  float f = map(noise(yoff), 0, 1, 0, maxAmplitude);
+  
+  yoff += 0.01; //Try different values for speed at which the amplitude changes
+  
+  //For every x value, calculate a y value with a sine function
+  float x = theta;
+  for (int i = 0; i < yvalues.length; i++) {
+    yvalues[i] = sin(x)*f;
+    x+=dx;
+  }
+  */
+  
+  //Chladni Figure 113
+  /*
+  //theta += 0.02; //incrememnt theta for different values of 'angular velocity'
+  theta = 0.0; //noMovement\
+  
+  float f = map(noise(yoff), 0, 1, 0, maxAmplitude);
+  
+  yoff += 0.01; //Try different values for speed at which the amplitude changes
+  
+  //For every x value, calculate a y value with a sine function
+  float x = theta;
+  for (int i = 0; i < yvalues.length; i++) {
+    yvalues[i] = sin(x)*f;
+    x+=dx;
+  }
+  */
+  
+  //Chladni Figure 130
+  /*
+  //theta += 0.02; //incrememnt theta for different values of 'angular velocity'
+  theta = 0.0; //noMovement\
+  
+  float f = map(noise(yoff), 0, 1, 0, maxAmplitude);
+  
+  yoff += 0.01; //Try different values for speed at which the amplitude changes
+  
+  //For every x value, calculate a y value with a sine function
+  float x = theta;
+  for (int i = 0; i < yvalues.length; i++) {
+    yvalues[i] = sin(x)*f;
+    x+=dx;
+  }
+  */
+  
+  //Chladni Figure 139
+  ///*
+  //theta += 0.02; //incrememnt theta for different values of 'angular velocity'
+  theta = 0.0; //noMovement\
+  
+  float f = map(noise(yoff), 0, 1, 0, maxAmplitude);
+  
+  yoff += 0.01; //Try different values for speed at which the amplitude changes
+  
+  //For every x value, calculate a y value with a sine function
+  float x = theta;
+  for (int i = 0; i < yvalues.length; i++) {
+    yvalues[i] = sin(x)*f;
+    x+=dx;
+  }
+  //*/
 }
+
+
+
+
+
 
 void renderWave() {
   //Chladni Figure 1
-  ///*
+  /*
   pg.colorMode(HSB,360,100,100);
   float col = map(noise(colNoise), 0, 1, 0, 360);
   
@@ -229,7 +435,7 @@ void renderWave() {
   pg.endShape();
   
   colNoise += 0.01;
-  //*/
+  */
   
   //Chladni Figure 94
   /*
@@ -260,7 +466,7 @@ void renderWave() {
   pg.fill(360-col, 100, 100);
   pg.beginShape();
   for (int x = 0; x < yvalues.length; x++) {
-    pg.curveVertex(x*xspacing, ((height/2)+spacing)-yvalues[x]);
+    pg.vertex(x*xspacing, ((height/2)+spacing)-yvalues[x]);
   }
   pg.vertex(width,height);
   pg.vertex(0, height);
@@ -271,31 +477,290 @@ void renderWave() {
   
   //Chladni Figure 106
   /*
-  pg.stroke(255);
-  pg.noFill();
+  pg.colorMode(HSB,360,100,100);
+  float col = map(noise(colNoise), 0, 1, 0, 360);
   
+  pg.background(col, 100, 100);
+  pg.noStroke();
+  
+  pg.fill(360-col, 100, 100);
   pg.beginShape();
   for (int x = 0; x < yvalues.length; x++) {
-    pg.curveVertex(x*xspacing, ((height/2)+spacing)+yvalues[x]);
+    pg.vertex(x*xspacing, ((height/2)-(3*spacing))+yvalues[x]);
   }
+  pg.vertex(width,height);
+  pg.vertex(0, height);
   pg.endShape();
   
+  pg.fill(col, 100, 100);
   pg.beginShape();
   for (int x = 0; x < yvalues.length; x++) {
-    pg.curveVertex(x*xspacing, ((height/2)-spacing)-yvalues[x]);
+    pg.vertex(x*xspacing, ((height/2)-spacing)-yvalues[x]);
   }
+  pg.vertex(width,height);
+  pg.vertex(0, height);
   pg.endShape();
   
+  pg.fill(360-col, 100, 100);
   pg.beginShape();
   for (int x = 0; x < yvalues.length; x++) {
-    pg.curveVertex(x*xspacing, ((height/2)+(3*spacing))-yvalues[x]);
+    pg.vertex(x*xspacing, ((height/2)+spacing)+yvalues[x]);
   }
+  pg.vertex(width,height);
+  pg.vertex(0, height);
   pg.endShape();
   
+  pg.fill(col, 100, 100);
   pg.beginShape();
   for (int x = 0; x < yvalues.length; x++) {
-    pg.curveVertex(x*xspacing, ((height/2)-(3*spacing))+yvalues[x]);
+    pg.vertex(x*xspacing, ((height/2)+(3*spacing))-yvalues[x]);
   }
+  pg.vertex(width,height);
+  pg.vertex(0, height);
   pg.endShape();
+    
+  colNoise += 0.01;
   */
+  
+  //Chladni Figure 108
+  /*
+  pg.colorMode(HSB,360,100,100);
+  float col = map(noise(colNoise), 0, 1, 0, 360);
+  
+  pg.background(col, 100, 100);
+  pg.noStroke();
+  
+  pg.fill(360-col, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < yvalues.length; x++) {
+    pg.vertex(x*xspacing, ((height/2)-(3*spacing))-yvalues[x]);
+  }
+  pg.vertex(width,height);
+  pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.fill(col, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < yvalues.length; x++) {
+    pg.vertex(x*xspacing, ((height/2)-spacing)+yvalues[x]);
+  }
+  pg.vertex(width,height);
+  pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.fill(360-col, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < yvalues.length; x++) {
+    pg.vertex(x*xspacing, ((height/2)+spacing)-yvalues[x]);
+  }
+  pg.vertex(width,height);
+  pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.fill(col, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < yvalues.length; x++) {
+    pg.vertex(x*xspacing, ((height/2)+(3*spacing))+yvalues[x]);
+  }
+  pg.vertex(width,height);
+  pg.vertex(0, height);
+  pg.endShape();
+  
+  colNoise += 0.01;
+  */
+  
+  //Chladni Figure 113
+  /*
+  pg.colorMode(HSB,360,100,100);
+  float col = map(noise(colNoise), 0, 1, 0, 360);
+  
+  pg.background(col, 100, 100);
+  pg.noStroke();
+  
+  pg.fill(360-col, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < yvalues.length; x++) {
+    pg.vertex(x*xspacing, ((height/2)-(2*spacing))+yvalues[x]);
+  }
+  pg.vertex(width,height);
+  pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.fill(col, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < yvalues.length; x++) {
+    pg.vertex(x*xspacing, ((height/2)-(spacing))-yvalues[x]);
+  }
+  pg.vertex(width,height);
+  pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.fill(360-col, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < yvalues.length; x++) {
+    pg.vertex(x*xspacing, (height/2)+yvalues[x]);
+  }
+  pg.vertex(width,height);
+  pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.fill(col, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < yvalues.length; x++) {
+    pg.vertex(x*xspacing, ((height/2)+spacing)-yvalues[x]);
+  }
+  pg.vertex(width,height);
+  pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.fill(360-col, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < yvalues.length; x++) {
+    pg.vertex(x*xspacing, ((height/2)+(2*spacing))+yvalues[x]);
+  }
+  pg.vertex(width,height);
+  pg.vertex(0, height);
+  pg.endShape();
+  
+  colNoise += 0.01;
+  */
+  
+  //Chladni Figure 130
+  /*
+  pg.colorMode(HSB,360,100,100);
+  float col = map(noise(colNoise), 0, 1, 0, 360);
+  
+  pg.background(col, 100, 100);
+  pg.noStroke();
+  
+  pg.fill(360-col, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < yvalues.length; x++) {
+    pg.vertex(x*xspacing, ((height/2)-(5*spacing))+yvalues[x]);
+  }
+  pg.vertex(width,height);
+  pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.fill(col, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < yvalues.length; x++) {
+    pg.vertex(x*xspacing, ((height/2)-(3*spacing))-yvalues[x]);
+  }
+  pg.vertex(width,height);
+  pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.fill(360-col, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < yvalues.length; x++) {
+    pg.vertex(x*xspacing, ((height/2)-(spacing))+yvalues[x]);
+  }
+  pg.vertex(width,height);
+  pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.fill(col, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < yvalues.length; x++) {
+    pg.vertex(x*xspacing, ((height/2)+spacing)-yvalues[x]);
+  }
+  pg.vertex(width,height);
+  pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.fill(360-col, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < yvalues.length; x++) {
+    pg.vertex(x*xspacing, ((height/2)+(3*spacing))+yvalues[x]);
+  }
+  pg.vertex(width,height);
+  pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.fill(col, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < yvalues.length; x++) {
+    pg.vertex(x*xspacing, ((height/2)+(5*spacing))-yvalues[x]);
+  }
+  pg.vertex(width,height);
+  pg.vertex(0, height);
+  pg.endShape();
+  
+  colNoise += 0.01;
+  */
+  
+  //Chladni Figure 139
+  ///*
+  pg.colorMode(HSB,360,100,100);
+  float col = map(noise(colNoise), 0, 1, 0, 360);
+  
+  pg.background(col, 100, 100);
+  pg.noStroke();
+  
+  float var = map(noise(heightNoise), 0, 1, -maxPix, maxPix);
+  
+  pg.fill(360-col, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < yvalues.length; x++) {
+    pg.vertex(x*xspacing, ((height/2)-(3*spacing))-yvalues[x]);
+  }
+  pg.vertex(width,height);
+  pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.fill(col, 100, 100);
+  pg.beginShape();
+  pg.vertex(0, (((height/2)-(2*spacing))+var));
+  pg.vertex(width, (((height/2)-(2*spacing))+var));
+  pg.vertex(width,height);
+  pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.fill(360-col, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < yvalues.length; x++) {
+    pg.vertex(x*xspacing, ((height/2)-spacing)+yvalues[x]);
+  }
+  pg.vertex(width,height);
+  pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.fill(col, 100, 100);
+  pg.beginShape();
+  pg.vertex(0, ((height/2)+var));
+  pg.vertex(width, ((height/2)+var));
+  pg.vertex(width,height);
+  pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.fill(360-col, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < yvalues.length; x++) {
+    pg.vertex(x*xspacing, ((height/2)+spacing)-yvalues[x]);
+  }
+  pg.vertex(width,height);
+  pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.fill(col, 100, 100);
+  pg.beginShape();
+  pg.vertex(0, (((height/2)+(2*spacing))+var));
+  pg.vertex(width, (((height/2)+(2*spacing))+var));
+  pg.vertex(width,height);
+  pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.fill(360-col, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < yvalues.length; x++) {
+    pg.vertex(x*xspacing, ((height/2)+(3*spacing))+yvalues[x]);
+  }
+  pg.vertex(width,height);
+  pg.vertex(0, height);
+  pg.endShape();
+  
+  colNoise += 0.01;
+  heightNoise += 0.01;
+  //*/
 }
