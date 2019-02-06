@@ -12,10 +12,14 @@ float ch1maxAmplitude = 40; //max height for the wave
 
 float ch1colNoise = 0.1;
 
+PShape ch1s;
+
 void ch1Setup () {
   ch1period = height*2;
   ch1dy = (TWO_PI / ch1period) * ch1yspacing;
   ch1xvalues = new float[height/ch1yspacing];
+  
+  ch1s = loadShape("CircleHole.svg");
 }
 
 void ch1Draw () {
@@ -40,17 +44,18 @@ void ch1CalcWave() {
   }
 }
 
-void ch1RenderWave() {
+void ch1RenderWave() {  
   pg.colorMode(HSB,360,100,100);
-  float col = map(noise(ch1colNoise), 0, 1, 0, 360);
+  float col = map(noise(ch1colNoise), 0, 1, 240, 360);
+  float oppCol = (360-col) + 240;
   
-  pg.background(col, 100, 100);
+  //pg.background(col, 70, 75);
   pg.noStroke();
   
-  pg.fill(360-col, 100, 100);
+  pg.fill(oppCol, 70, 75);
   pg.ellipse(width/2,height/2,width,height);
   
-  pg.fill(col, 100, 100);
+  pg.fill(col, 70, 75);
   pg.beginShape();
   for (int y = 0; y < ch1xvalues.length; y++) {
     pg.vertex((width/2)+ch1xvalues[y],y*ch1yspacing);
@@ -66,6 +71,10 @@ void ch1RenderWave() {
   pg.vertex(width/2,height);
   pg.vertex(width/2,0);
   pg.endShape();
+  
+  ch1s.disableStyle();
+  pg.fill(col, 70, 75);
+  pg.shape(ch1s,0,0,width,height);
   
   ch1colNoise += 0.01;
 }

@@ -29,8 +29,8 @@ void ch108Draw () {
 }
 
 void ch108CalcWave() {
-  //ch108theta += 0.02; //incrememnt theta for different values of 'angular velocity'
-  ch108theta = 0.0; //noMovement\
+  ch108theta -= 0.03; //incrememnt theta for different values of 'angular velocity'
+  //ch108theta = 0.0; //noMovement\
   
   float f = map(noise(ch108yoff), 0, 1, 0, ch108maxAmplitude);
   
