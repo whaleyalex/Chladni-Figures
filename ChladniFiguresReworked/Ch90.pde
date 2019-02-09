@@ -8,13 +8,16 @@ float ch90dy; //Value for incrementing Y, as a function of period and yspacing
 float[] ch90xvalues; //Using an array to store horizontal values for the wave
 
 float ch90xoff = 0.0; //noise for the amplitude of the wave
-float ch90maxAmplitude = 100; //max height for the wave
+float ch90maxAmplitude; //max height for the wave
 
-float ch90dist = 100; //pixels from the center line
+float ch90dist; //pixels from the center line
 
 float ch90colNoise = 0.1;
 
 void ch90Setup () {
+  ch90dist = width*0.25;
+  ch90maxAmplitude = width*0.2;
+  
   ch90period = height*2;
   ch90dy = (TWO_PI / ch90period) * ch90yspacing;
   ch90xvalues = new float[height/ch90yspacing];

@@ -1,7 +1,7 @@
 //ChladniFiguresReworked
 
 PGraphics pg;
-int dim = 512; //dimension for width and height
+int dim = 1024; //dimension for width and height
 
 int caseNum = 1;
 
@@ -11,21 +11,27 @@ int X_AXIS = 2;
 color c1, c2;
 
 void setup() {
-  size(512, 512, P3D);
+  size(1024, 1024, P3D);
   pg = createGraphics(dim,dim);
   textureMode(NORMAL);
   
   //Setup functions for each Chladni Figure
   ch1Setup();
+  ch67Setup();
   ch89Setup();
   ch90Setup();
   ch94Setup();
   ch97Setup();
   ch106Setup();
   ch108Setup();
+  ch109Setup();
+  ch111Setup();
   ch115Setup();
+  ch119Setup();
   ch130Setup();
+  ch136Setup();
   ch139Setup();
+  ch141Setup();
   
   c1 = color(255, 0, 0);
   c2 = color(0, 0, 255);
@@ -36,31 +42,31 @@ void setup() {
 void draw() {
   switch (caseNum) { //determines which Chladni Figure is shown for which number key is pressed
     case 1:
-      ch1Draw();
-    break;
-    case 2:
-      ch89Draw();
-    break;
-    case 3:
       ch90Draw();
     break;
-    case 4:
+    case 2:
       ch94Draw();
     break;
-    case 5:
-      ch139Draw();
+    case 3:
+      ch97Draw();
     break;
-    case 6:
+    case 4:
       ch106Draw();
     break;
-    case 7:
+    case 5:
       ch108Draw();
     break;
-    case 8:
+    case 6:
       ch115Draw();
     break;
-    case 9:
+    case 7:
       ch130Draw();
+    break;
+    case 8:
+      ch139Draw();
+    break;
+    case 9:
+      ch1Draw();
     break;
   }
   

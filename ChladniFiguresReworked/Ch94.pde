@@ -8,14 +8,16 @@ float ch94dx; //Value for incrementing X, a function of period and xspacing
 float[] ch94yvalues; //An array to store the height values for the wave
 
 float ch94yoff = 0.0; //noise for the amplitude of the wave
-float ch94maxAmplitude = 75; //max height for the wave
+float ch94maxAmplitude; //max height for the wave
 
-int ch94spacing = 150; //pixel spacing value for wave placement
+float ch94spacing; //pixel spacing value for wave placement
 
 float ch94colNoise = 0.1; //color noise
 
 void ch94Setup () {
   ch94period = width;
+  ch94spacing = height*0.333;
+  ch94maxAmplitude = height*0.15;
   
   ch94dx = (TWO_PI / ch94period) * ch94xspacing;
   ch94yvalues = new float[width/ch94xspacing];
