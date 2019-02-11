@@ -8,9 +8,9 @@ float ch139dx; //Value for incrementing X, a function of period and xspacing
 float[] ch139yvalues; //An array to store the height values for the wave
 
 float ch139yoff = 0.0; //noise for the amplitude of the wave
-float ch139maxAmplitude = 50; //max height for the wave
+float ch139maxAmplitude; //max height for the wave
 
-int ch139spacing = 60; //pixel spacing value for wave placement
+float ch139spacing; //pixel spacing value for wave placement
 
 float ch139colNoise = 0.1; //color noise
 
@@ -19,6 +19,8 @@ float ch139heightNoise = 0.0; // noise variable for height up and down curve mov
 
 void ch139Setup () {
   ch139period = width * 0.6667;
+  ch139spacing = height*0.143;
+  ch139maxAmplitude= height*0.07;
   
   ch139dx = (TWO_PI / ch139period) * ch139xspacing;
   ch139yvalues = new float[width/ch139xspacing];

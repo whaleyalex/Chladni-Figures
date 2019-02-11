@@ -8,7 +8,7 @@ float ch1dy; //Value for incrementing Y, as a function of period and yspacing
 float[] ch1xvalues; //Using an array to store horizontal values for the wave
 
 float ch1xoff = 0.0; //noise for the amplitude of the wave
-float ch1maxAmplitude = 40; //max height for the wave
+float ch1maxAmplitude; //max height for the wave
 
 float ch1colNoise = 0.1;
 
@@ -16,6 +16,7 @@ PShape ch1s;
 
 void ch1Setup () {
   ch1period = height*2;
+  ch1maxAmplitude = height*0.1;
   ch1dy = (TWO_PI / ch1period) * ch1yspacing;
   ch1xvalues = new float[height/ch1yspacing];
   
