@@ -17,9 +17,12 @@ void setup() {
   
   //Setup functions for each Chladni Figure
   ch1Setup();
+  ch37Setup();
   ch50Setup();
+  ch62Setup();
   ch67Setup();
   ch73Setup();
+  ch75Setup();
   ch89Setup();
   ch90Setup();
   ch94Setup();
@@ -28,11 +31,13 @@ void setup() {
   ch108Setup();
   ch109Setup();
   ch111Setup();
+  ch113Setup();
   ch115Setup();
   ch119Setup();
   ch126Setup();
   ch130Setup();
   ch136Setup();
+  ch137Setup();
   ch139Setup();
   ch141Setup();
   
@@ -45,7 +50,7 @@ void setup() {
 void draw() {
   switch (caseNum) { //determines which Chladni Figure is shown for which number key is pressed
     case 1:
-      ch50Draw();
+      ch137Draw();
     break;
     case 2:
       ch119Draw();

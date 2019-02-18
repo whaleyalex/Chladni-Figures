@@ -14,13 +14,15 @@ float ch139spacing; //pixel spacing value for wave placement
 
 float ch139colNoise = 0.1; //color noise
 
-float ch139maxPix = 30; //max num pixels line moves up and down
+float ch139maxPix; //max num pixels line moves up and down
 float ch139heightNoise = 0.0; // noise variable for height up and down curve moves
 
 void ch139Setup () {
   ch139period = width * 0.6667;
   ch139spacing = height*0.143;
   ch139maxAmplitude= height*0.07;
+  
+  ch139maxPix = height * 0.059;
   
   ch139dx = (TWO_PI / ch139period) * ch139xspacing;
   ch139yvalues = new float[width/ch139xspacing];
