@@ -1,9 +1,16 @@
-//ChladniFiguresReworked
+//ChladniFiguresGlobalVariables
 
 PGraphics pg;
 int dim = 512; //dimension for width and height
 
-int caseNum = 1;
+int caseNum = 1; //Which Chladni figure is being drawn
+float staticTheta = 0.0; //unchaging value for theta that has no movement
+float theta = 0.0; //postive direction movement
+float negativeTheta = 0.0; //negative direction movement;
+
+float colNoise = 0.1; //noise for color of Chladni figures
+
+PShape circle; //circular PShape
 
 //Constants for Gradient
 int Y_AXIS = 1;
@@ -15,6 +22,8 @@ void setup() {
   pg = createGraphics(dim,dim);
   textureMode(NORMAL);
   
+  circle = loadShape("CircleHole.svg");
+  
   //Setup functions for each Chladni Figure
   ch1Setup();
   ch37Setup();
@@ -25,6 +34,7 @@ void setup() {
   ch75Setup();
   ch89Setup();
   ch90Setup();
+  ch91Setup();
   ch94Setup();
   ch97Setup();
   ch106Setup();
@@ -41,6 +51,8 @@ void setup() {
   ch139Setup();
   ch141Setup();
   
+  //pg.blendMode(REPLACE);
+  
   c1 = color(255, 0, 0);
   c2 = color(0, 0, 255);
     
@@ -48,10 +60,12 @@ void setup() {
 }
 
 void draw() {
+  pg.colorMode(HSB,360,100,100);
+  
   switch (caseNum) { //determines which Chladni Figure is shown for which number key is pressed
     case 1:
       ch1Draw();
-    break;
+    break;  
     case 2:
       ch37Draw();
     break;
@@ -77,7 +91,7 @@ void draw() {
       ch90Draw();
     break;
     case 10:
-      ch126Draw(); //repeat REPLACE
+      ch126Draw(); //repeat REPLACE 126
     break;
     case 11:
       ch94Draw();
@@ -126,6 +140,9 @@ void draw() {
     break;
   }
   
+  colNoise += 0.01; //increment value of noise for color
+  
+  //PGraphics dimensions as a texture
   beginShape();
   texture(pg);
   vertex(0,0,0,0);
@@ -136,7 +153,7 @@ void draw() {
   endShape(CLOSE);
 }
 
-void keyPressed() {
+void keyPressed() { //keybinding for the Chladni figures
   if (key == '1') {
     caseNum = 1;
   }
@@ -211,6 +228,27 @@ void keyPressed() {
   }
   else if (key == 'g') {
     caseNum = 25;
+  }
+  else if (key == 'z') {
+    pg.blendMode(REPLACE);
+  }
+  else if (key == 'x') {
+    pg.blendMode(ADD);
+  }
+  else if (key == 'c') {
+    pg.blendMode(SUBTRACT);
+  }
+  else if (key == 'v') {
+    pg.blendMode(DARKEST);
+  }
+  else if (key == 'b') {
+    pg.blendMode(LIGHTEST);
+  }
+  else if (key == 'n') {
+    pg.blendMode(DIFFERENCE);
+  }
+  else if (key == 'm') {
+    pg.blendMode(EXCLUSION);
   }
 }
 
