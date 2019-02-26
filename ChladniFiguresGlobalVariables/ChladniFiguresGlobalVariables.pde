@@ -8,7 +8,10 @@ float staticTheta = 0.0; //unchaging value for theta that has no movement
 float theta = 0.0; //postive direction movement
 float negativeTheta = 0.0; //negative direction movement;
 
+float rot = 0; //angle of rotation
+
 float colNoise = 0.1; //noise for color of Chladni figures
+float zNoise = 0.2; //noise for scale factors
 
 PShape circle; //circular PShape
 
@@ -53,8 +56,8 @@ void setup() {
   
   //pg.blendMode(REPLACE);
   
-  c1 = color(255, 0, 0);
-  c2 = color(0, 0, 255);
+  //c1 = color(255, 0, 0);
+  //c2 = color(0, 0, 255);
     
   //frameRate(24);
 }
@@ -141,6 +144,12 @@ void draw() {
   }
   
   colNoise += 0.01; //increment value of noise for color
+  zNoise += 0.01; //noise for z translation
+  
+  rot++;
+  if (rot == 361) { //reset rotation angle
+    rot = 0;
+  }
   
   //PGraphics dimensions as a texture
   beginShape();

@@ -86,29 +86,47 @@ void ch50RenderWave() {
   pg.background(col, 100, 100);
   pg.noStroke();
   
+  pg.pushMatrix();
+  pg.translate(width/2,height/2);
+  pg.rotate(radians(rot*1.5));
+  
   pg.fill(360-col, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch50yvalues1.length; x++) {
-    pg.curveVertex(ch50xvalues1[x]+(width/2),ch50yvalues1[x]+(height/2));
+    pg.curveVertex(ch50xvalues1[x],ch50yvalues1[x]);
   }
-  pg.curveVertex(ch50xvalues1[0]+(width/2), ch50yvalues1[0]+(height/2));
+  pg.curveVertex(ch50xvalues1[0], ch50yvalues1[0]);
   pg.endShape();
+  
+  pg.popMatrix();
+  
+  pg.pushMatrix();
+  pg.translate(width/2,height/2);
+  pg.rotate(radians(-rot));
   
   pg.fill(col, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch50yvalues2.length; x++) {
-    pg.curveVertex(ch50xvalues2[x]+(width/2),ch50yvalues2[x]+(height/2));
+    pg.curveVertex(ch50xvalues2[x],ch50yvalues2[x]);
   }
-  pg.curveVertex(ch50xvalues2[0]+(width/2), ch50yvalues2[0]+(height/2));
+  pg.curveVertex(ch50xvalues2[0], ch50yvalues2[0]);
   pg.endShape();
+  
+  pg.popMatrix();
+  
+  pg.pushMatrix();
+  pg.translate(width/2,height/2);
+  pg.rotate(radians(rot*0.5));
   
   pg.fill(360-col, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch50yvalues3.length; x++) {
-    pg.curveVertex(ch50xvalues3[x]+(width/2),ch50yvalues3[x]+(height/2));
+    pg.curveVertex(ch50xvalues3[x],ch50yvalues3[x]);
   }
-  pg.curveVertex(ch50xvalues3[0]+(width/2), ch50yvalues3[0]+(height/2));
+  pg.curveVertex(ch50xvalues3[0], ch50yvalues3[0]);
   pg.endShape();
+  
+  pg.popMatrix();
   
   float xoff = map(noise(ch50xoffCirc), 0, 1, -ch50maxDisplacement, ch50maxDisplacement);
   float yoff = map(noise(ch50yoffCirc), 0, 1, -ch50maxDisplacement, ch50maxDisplacement);
@@ -116,9 +134,9 @@ void ch50RenderWave() {
   pg.fill(col, 100, 100);
   pg.ellipse(width/2,height/2,(width*0.333)+xoff,(height*0.333)+yoff);
   
-  circle.disableStyle();
-  pg.fill(col, 70, 75);
-  pg.shape(circle,0,0,width,height);
+  //circle.disableStyle(); //circlular surroundings
+  //pg.fill(col, 70, 75);
+  //pg.shape(circle,0,0,width,height);
   
   ch50xoffCirc += 0.01;
   ch50yoffCirc += 0.01;
