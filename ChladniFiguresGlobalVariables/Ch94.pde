@@ -6,7 +6,6 @@ float ch94period; //pixels before wave repeats
 float ch94dx; //Value for incrementing X, a function of period and xspacing
 float[] ch94yvalues; //An array to store the height values for the wave
 
-float ch94yoff = 0.0; //noise for the amplitude of the wave
 float ch94maxAmplitude; //max height for the wave
 
 float ch94spacing; //pixel spacing value for wave placement
@@ -28,9 +27,7 @@ void ch94Draw () {
 }
 
 void ch94CalcWave() {
-  float f = map(noise(ch94yoff), 0, 1, 0, ch94maxAmplitude);
-  
-  ch94yoff += 0.01; //Try different values for speed at which the amplitude changes
+  float f = map(ampNoise1, min1, max1, 0, ch94maxAmplitude);
   
   //For every x value, calculate a y value with a sine function
   float x = staticTheta;
@@ -41,12 +38,10 @@ void ch94CalcWave() {
 }
 
 void ch94RenderWave() {
-  float col = map(noise(colNoise), 0, 1, 0, 360);
-  
   pg.background(col, 100, 100);
   pg.noStroke();
   
-  pg.fill(360-col, 100, 100);
+  pg.fill(oppCol, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch94yvalues.length; x++) {
     pg.curveVertex(x*ch94xspacing, ((height/2)-ch94spacing)-ch94yvalues[x]);
@@ -64,7 +59,7 @@ void ch94RenderWave() {
   pg.vertex(0, height);
   pg.endShape();
   
-  pg.fill(360-col, 100, 100);
+  pg.fill(oppCol, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch94yvalues.length; x++) {
     pg.vertex(x*ch94xspacing, ((height/2)+ch94spacing)-ch94yvalues[x]);

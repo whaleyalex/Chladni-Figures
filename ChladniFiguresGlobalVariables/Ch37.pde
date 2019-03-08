@@ -6,18 +6,14 @@ float[] ch37yvalues1 = new float[360]; //An array to store the height values for
 float[] ch37xvalues2 = new float[360]; //An array to store the horizontal values for the wave
 float[] ch37yvalues2 = new float[360]; //An array to store the height values for the wave
 
-float ch37yoff1 = 0.0; //noise for the amplitude of the wave
 float ch37maxAmplitude1; //max height for the wave
 float ch37radius1;
 int ch37numOfSins1;
 
-float ch37yoff2 = 0.1; //noise for the amplitude of the wave
 float ch37maxAmplitude2; //max height for the wave
 float ch37radius2;
 int ch37numOfSins2;
 
-float ch37xoffCirc = 0.3; //noise for the x dimension of the ellipse
-float ch37yoffCirc = 0.4; //noise for the y dimension of the ellipse
 float ch37maxDisplacement; //maxDisplacement for dimensions of ellipse in the center of the figure
 
 void ch37Setup () {
@@ -40,18 +36,14 @@ void ch37Draw () {
 }
 
 void ch37CalcWave() {
-  float f1 = map(noise(ch37yoff1), 0, 1, 0, ch37maxAmplitude1);
-  
-  ch37yoff1 += 0.01; //Try different values for speed at which the amplitude changes
+  float f1 = map(ampNoise1, min1, max1, 0, ch37maxAmplitude1);
     
   for (int i = 0; i < 360; i++) {
     ch37xvalues1[i] = (ch37radius1+(f1*(-cos(ch37numOfSins1*radians(i)))))*cos(radians(i));
     ch37yvalues1[i] = (ch37radius1+(f1*(-cos(ch37numOfSins1*radians(i)))))*sin(radians(i));
   }
   
-  float f2 = map(noise(ch37yoff2), 0, 1, 0, ch37maxAmplitude2);
-  
-  ch37yoff2 += 0.01; //Try different values for speed at which the amplitude changes
+  float f2 = map(ampNoise2, min2, max2, 0, ch37maxAmplitude2);
     
   for (int i = 0; i < 360; i++) {
     ch37xvalues2[i] = (ch37radius2+(f2*(cos(ch37numOfSins2*radians(i)))))*cos(radians(i));
@@ -60,7 +52,6 @@ void ch37CalcWave() {
 }
 
 void ch37RenderWave() {
-  float col = map(noise(colNoise), 0, 1, 0, 360);
   //float zVar = map(noise(zNoise), 0, 1, -30, 30);
   
   pg.background(col, 100, 100);
@@ -71,7 +62,7 @@ void ch37RenderWave() {
   pg.rotate(radians(rot));
   //pg.scale(map(scaleNoise,0,1,0.75,1.1)); //because of how scale works, the scale can change differently depending on the previous scale
   
-  pg.fill(360-col, 100, 100);
+  pg.fill(oppCol, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch37yvalues1.length; x++) {
     pg.curveVertex(ch37xvalues1[x],ch37yvalues1[x]);
@@ -95,13 +86,13 @@ void ch37RenderWave() {
   
   pg.popMatrix();
   
-  float xoff = map(noise(ch37xoffCirc), 0, 1, -ch37maxDisplacement, ch37maxDisplacement);
-  float yoff = map(noise(ch37yoffCirc), 0, 1, -ch37maxDisplacement, ch37maxDisplacement);
+  float xoff = map(xNoise, min6, max6, -ch37maxDisplacement, ch37maxDisplacement);
+  float yoff = map(yNoise, min7, max7, -ch37maxDisplacement, ch37maxDisplacement);
   
   pg.pushMatrix();
   pg.translate(width/2,height/2);
   
-  pg.fill(360-col, 100, 100);
+  pg.fill(oppCol, 100, 100);
   pg.ellipse(0,0,(width*0.333)+xoff,(height*0.333)+yoff);
   
   pg.popMatrix();
@@ -109,7 +100,4 @@ void ch37RenderWave() {
   circle.disableStyle();
   pg.fill(col, 70, 75);
   pg.shape(circle,0,0,width,height);
-  
-  ch37xoffCirc += 0.01;
-  ch37yoffCirc += 0.01;
 }

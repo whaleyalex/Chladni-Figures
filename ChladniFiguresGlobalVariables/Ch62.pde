@@ -15,33 +15,26 @@ float[] ch62yvalues4 = new float[360]; //An array to store the height values for
 float[] ch62xvalues5 = new float[360]; //An array to store the horizontal values for the wave
 float[] ch62yvalues5 = new float[360]; //An array to store the height values for the wave
 
-float ch62yoff1 = 0.0; //noise for the amplitude of the wave
 float ch62maxAmplitude1; //max height for the wave
 float ch62radius1;
 int ch62numOfSins1;
 
-float ch62yoff2 = 0.1; //noise for the amplitude of the wave
 float ch62maxAmplitude2; //max height for the wave
 float ch62radius2;
 int ch62numOfSins2;
 
-float ch62yoff3 = 0.2; //noise for the amplitude of the wave
 float ch62maxAmplitude3; //max height for the wave
 float ch62radius3;
 int ch62numOfSins3;
 
-float ch62yoff4 = 0.3; //noise for the amplitude of the wave
 float ch62maxAmplitude4; //max height for the wave
 float ch62radius4;
 int ch62numOfSins4;
 
-float ch62yoff5 = 0.4; //noise for the amplitude of the wave
 float ch62maxAmplitude5; //max height for the wave
 float ch62radius5;
 int ch62numOfSins5;
 
-float ch62xoffCirc = 0.3; //noise for the x dimension of the ellipse
-float ch62yoffCirc = 0.4; //noise for the y dimension of the ellipse
 float ch62maxDisplacement; //maxDisplacement for dimensions of ellipse in the center of the figure
 
 void ch62Setup () {
@@ -76,45 +69,35 @@ void ch62Draw () {
 }
 
 void ch62CalcWave() {
-  float f1 = map(noise(ch62yoff1), 0, 1, 0, ch62maxAmplitude1);
-  
-  ch62yoff1 += 0.01; //Try different values for speed at which the amplitude changes
+  float f1 = map(ampNoise1, min1, max1, 0, ch62maxAmplitude1);
     
   for (int i = 0; i < 360; i++) {
     ch62xvalues1[i] = (ch62radius1+(f1*(-cos(ch62numOfSins1*radians(i)))))*cos(radians(i));
     ch62yvalues1[i] = (ch62radius1+(f1*(-cos(ch62numOfSins1*radians(i)))))*sin(radians(i));
   }
   
-  float f2 = map(noise(ch62yoff2), 0, 1, 0, ch62maxAmplitude2);
-  
-  ch62yoff2 += 0.01; //Try different values for speed at which the amplitude changes
+  float f2 = map(ampNoise2, min2, max2, 0, ch62maxAmplitude2);
     
   for (int i = 0; i < 360; i++) {
     ch62xvalues2[i] = (ch62radius2+(f2*(cos(ch62numOfSins2*radians(i)))))*cos(radians(i));
     ch62yvalues2[i] = (ch62radius2+(f2*(cos(ch62numOfSins2*radians(i)))))*sin(radians(i));
   }
   
-  float f3 = map(noise(ch62yoff3), 0, 1, 0, ch62maxAmplitude3);
-  
-  ch62yoff3 += 0.01; //Try different values for speed at which the amplitude changes
+  float f3 = map(ampNoise3, min3, max3, 0, ch62maxAmplitude3);
     
   for (int i = 0; i < 360; i++) {
     ch62xvalues3[i] = (ch62radius3+(f3*(-cos(ch62numOfSins3*radians(i)))))*cos(radians(i));
     ch62yvalues3[i] = (ch62radius3+(f3*(-cos(ch62numOfSins3*radians(i)))))*sin(radians(i));
   }
   
-  float f4 = map(noise(ch62yoff4), 0, 1, 0, ch62maxAmplitude4);
-  
-  ch62yoff4 += 0.01; //Try different values for speed at which the amplitude changes
+  float f4 = map(ampNoise4, min4, max4, 0, ch62maxAmplitude4);
     
   for (int i = 0; i < 360; i++) {
     ch62xvalues4[i] = (ch62radius4+(f4*(sin(ch62numOfSins4*radians(i)))))*cos(radians(i));
     ch62yvalues4[i] = (ch62radius4+(f4*(sin(ch62numOfSins4*radians(i)))))*sin(radians(i));
   }
   
-  float f5 = map(noise(ch62yoff5), 0, 1, 0, ch62maxAmplitude5);
-  
-  ch62yoff5 += 0.01; //Try different values for speed at which the amplitude changes
+  float f5 = map(ampNoise5, min5, max5, 0, ch62maxAmplitude5);
     
   for (int i = 0; i < 360; i++) {
     ch62xvalues5[i] = (ch62radius5+(f5*(-sin(ch62numOfSins5*radians(i)))))*cos(radians(i));
@@ -123,12 +106,10 @@ void ch62CalcWave() {
 }
 
 void ch62RenderWave() {
-  float col = map(noise(colNoise), 0, 1, 0, 360);
-  
   pg.background(col, 100, 100);
   pg.noStroke();
   
-  pg.fill(360-col, 100, 100);
+  pg.fill(oppCol, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch62yvalues1.length; x++) {
     pg.curveVertex(ch62xvalues1[x]+(width/2),ch62yvalues1[x]+(height/2));
@@ -144,7 +125,7 @@ void ch62RenderWave() {
   pg.curveVertex(ch62xvalues2[0]+(width/2), ch62yvalues2[0]+(height/2));
   pg.endShape();
   
-  pg.fill(360-col, 100, 100);
+  pg.fill(oppCol, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch62yvalues3.length; x++) {
     pg.curveVertex(ch62xvalues3[x]+(width/2),ch62yvalues3[x]+(height/2));
@@ -160,7 +141,7 @@ void ch62RenderWave() {
   pg.curveVertex(ch62xvalues4[0]+(width/2), ch62yvalues4[0]+(height/2));
   pg.endShape();
   
-  pg.fill(360-col, 100, 100);
+  pg.fill(oppCol, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch62yvalues5.length; x++) {
     pg.curveVertex(ch62xvalues5[x]+(width/2),ch62yvalues5[x]+(height/2));
@@ -168,16 +149,13 @@ void ch62RenderWave() {
   pg.curveVertex(ch62xvalues5[0]+(width/2), ch62yvalues5[0]+(height/2));
   pg.endShape();
   
-  float xoff = map(noise(ch62xoffCirc), 0, 1, -ch62maxDisplacement, ch62maxDisplacement);
-  float yoff = map(noise(ch62yoffCirc), 0, 1, -ch62maxDisplacement, ch62maxDisplacement);
+  float xoff = map(xNoise, min6, max6, -ch62maxDisplacement, ch62maxDisplacement);
+  float yoff = map(yNoise, min7, max7, -ch62maxDisplacement, ch62maxDisplacement);
   
   pg.fill(col, 100, 100);
   pg.ellipse(width/2,height/2,(width*0.28)+xoff,(height*0.28)+yoff);
   
   circle.disableStyle();
-  pg.fill(360-col, 70, 75);
+  pg.fill(oppCol, 70, 75);
   pg.shape(circle,0,0,width,height);
-  
-  ch62xoffCirc += 0.01;
-  ch62yoffCirc += 0.01;
 }

@@ -6,7 +6,6 @@ float ch67period; //How many pixels before the wave repeats
 float ch67dx; //Value for incrementing Y, as a function of period and yspacing
 float[] ch67yvalues; //Using an array to store horizontal values for the wave
 
-float ch67yoff = 0.0; //noise for the amplitude of the wave
 float ch67maxAmplitude; //max height for the wave
 
 void ch67Setup () {
@@ -25,10 +24,7 @@ void ch67Draw () {
 }
 
 void ch67CalcWave() {
-  
-  float f = map(noise(ch67yoff), 0, 1, 0, ch67maxAmplitude);
-  
-  ch67yoff += 0.01; //Try different values for speed at which the amplitude changes
+  float f = map(ampNoise1, min1, max1, 0, ch67maxAmplitude);
   
   float x = staticTheta;
   for (int i = 0; i < ch67yvalues.length; i++) {
@@ -38,9 +34,6 @@ void ch67CalcWave() {
 }
 
 void ch67RenderWave() {  
-  float col = map(noise(colNoise), 0, 1, 240, 360);
-  float oppCol = (360-col) + 240;
-  
   //pg.background(col, 70, 75);
   pg.noStroke();
   

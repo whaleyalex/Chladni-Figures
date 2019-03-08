@@ -6,7 +6,6 @@ float ch90period; //How many pixels before the wave repeats
 float ch90dy; //Value for incrementing Y, as a function of period and yspacing
 float[] ch90xvalues; //Using an array to store horizontal values for the wave
 
-float ch90xoff = 0.0; //noise for the amplitude of the wave
 float ch90maxAmplitude; //max height for the wave
 
 float ch90dist; //pixels from the center line
@@ -28,9 +27,7 @@ void ch90Draw () {
 }
 
 void ch90CalcWave() {
-  float f = map(noise(ch90xoff), 0, 1, 0, ch90maxAmplitude);
-  
-  ch90xoff += 0.01; //Try different values for speed at which the amplitude changes
+  float f = map(ampNoise1, min1, max1, 0, ch90maxAmplitude);
   
   float y = staticTheta;
   for (int i = 0; i < ch90xvalues.length; i++) {
@@ -40,12 +37,10 @@ void ch90CalcWave() {
 }
 
 void ch90RenderWave() {
-  float col = map(noise(colNoise), 0, 1, 0, 360);
-  
   pg.background(col, 100, 100);
   pg.noStroke();
   
-  pg.fill(360-col, 100, 100);
+  pg.fill(oppCol, 100, 100);
   pg.beginShape();
   for (int y = 0; y < ch90xvalues.length; y++) {
     pg.vertex((width/2)+(ch90dist)+ch90xvalues[y],y*ch90yspacing);

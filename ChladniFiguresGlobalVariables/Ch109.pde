@@ -1,9 +1,6 @@
 //ChladniFigure109
 
-float ch109xNoise = 0.1;
-float ch109yNoise = 0.2;
-
-float ch109maxDisplacement = 20; //max number of pixels for shifting lines positive and negative;
+float ch109maxDisplacement; //max number of pixels for shifting lines positive and negative;
 
 float ch109y1,ch109y2,ch109y3,ch109y4;
 
@@ -12,16 +9,15 @@ void ch109Setup () {
   ch109y2 = height*0.375;
   ch109y3 = height*0.625;
   ch109y4 = height*0.875;
+  
+  ch109maxDisplacement  = height * 0.1;
 }
 
 void ch109Draw () {
   pg.beginDraw();
   
-  float col = map(noise(colNoise), 0, 1, 240, 360);
-  float oppCol = (360-col) + 240;
-  
-  float xOffset = map(noise(ch109xNoise), 0, 1, -ch109maxDisplacement, ch109maxDisplacement);
-  float yOffset = map(noise(ch109yNoise), 0, 1, -ch109maxDisplacement, ch109maxDisplacement);
+  float xOffset = map(xNoise, min6, max6, -ch109maxDisplacement, ch109maxDisplacement);
+  float yOffset = map(yNoise, min7, max7, -ch109maxDisplacement, ch109maxDisplacement);
   
   //pg.background(col, 70, 75);
   pg.noStroke();
@@ -60,10 +56,5 @@ void ch109Draw () {
   pg.fill(oppCol, 70, 75);
   pg.rect((width/2)+xOffset,ch109y4+yOffset,width-((width/2)+xOffset),height-(ch109y4+yOffset));
   
-  
-  
   pg.endDraw();
-  
-  ch109xNoise += 0.01;
-  ch109yNoise += 0.01;
 }

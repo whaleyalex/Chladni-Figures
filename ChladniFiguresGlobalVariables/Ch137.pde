@@ -47,14 +47,12 @@ void ch137CalcWave() {
 }
 
 void ch137RenderWave() {
-  float col = map(noise(colNoise), 0, 1, 0, 360);
-  
   pg.background(col, 100, 100);
   pg.noStroke();
   
   float var = map(noise(ch137horizontalNoise), 0, 1, -ch137maxPix, ch137maxPix);
   
-  pg.fill(360-col, 100, 100);
+  pg.fill(oppCol, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch137yvalues.length; x++) {
     pg.vertex(x*ch137xspacing, ((height/2)-(3*ch137spacing))-ch137yvalues[x]);
@@ -63,7 +61,7 @@ void ch137RenderWave() {
   pg.vertex(0, height);
   pg.endShape();
   
-  pg.fill(360-col, 100, 100);
+  pg.fill(oppCol, 100, 100); //CHECK THIS FIGURE <<<<<< Color??
   pg.beginShape();
   for (int x = 0; x < ch137yvalues.length; x++) {
     pg.vertex(x*ch137xspacing, ((height/2)-ch137spacing)+ch137yvalues[x]);
@@ -72,7 +70,7 @@ void ch137RenderWave() {
   pg.vertex(0, height);
   pg.endShape();
   
-  pg.fill(360-col, 100, 100);
+  pg.fill(oppCol, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch137yvalues.length; x++) {
     pg.vertex(x*ch137xspacing, ((height/2)+ch137spacing)-ch137yvalues[x]);
@@ -81,7 +79,7 @@ void ch137RenderWave() {
   pg.vertex(0, height);
   pg.endShape();
   
-  pg.fill(360-col, 100, 100);
+  pg.fill(oppCol, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch137yvalues.length; x++) {
     pg.vertex(x*ch137xspacing, ((height/2)+(3*ch137spacing))+ch137yvalues[x]);

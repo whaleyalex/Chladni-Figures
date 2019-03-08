@@ -6,7 +6,6 @@ float ch130period; //pixels before wave repeats
 float ch130dx; //Value for incrementing X, a function of period and xspacing
 float[] ch130yvalues; //An array to store the height values for the wave
 
-float ch130yoff = 0.0; //noise for the amplitude of the wave
 float ch130maxAmplitude; //max height for the wave
 
 float ch130spacing; //pixel spacing value for wave placement
@@ -29,9 +28,7 @@ void ch130Draw () {
 
 void ch130CalcWave() {
   
-  float f = map(noise(ch130yoff), 0, 1, 0, ch130maxAmplitude);
-  
-  ch130yoff += 0.01; //Try different values for speed at which the amplitude changes
+  float f = map(ampNoise1, min1, max1, 0, ch130maxAmplitude);
   
   //For every x value, calculate a y value with a sine function
   float x = staticTheta;
@@ -42,12 +39,10 @@ void ch130CalcWave() {
 }
 
 void ch130RenderWave() {
-  float col = map(noise(colNoise), 0, 1, 0, 360);
-  
   pg.background(col, 100, 100);
   pg.noStroke();
   
-  pg.fill(360-col, 100, 100);
+  pg.fill(oppCol, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch130yvalues.length; x++) {
     pg.vertex(x*ch130xspacing, ((height/2)-(5*ch130spacing))+ch130yvalues[x]);
@@ -65,7 +60,7 @@ void ch130RenderWave() {
   pg.vertex(0, height);
   pg.endShape();
   
-  pg.fill(360-col, 100, 100);
+  pg.fill(oppCol, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch130yvalues.length; x++) {
     pg.vertex(x*ch130xspacing, ((height/2)-(ch130spacing))+ch130yvalues[x]);
@@ -83,7 +78,7 @@ void ch130RenderWave() {
   pg.vertex(0, height);
   pg.endShape();
   
-  pg.fill(360-col, 100, 100);
+  pg.fill(oppCol, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch130yvalues.length; x++) {
     pg.vertex(x*ch130xspacing, ((height/2)+(3*ch130spacing))+ch130yvalues[x]);

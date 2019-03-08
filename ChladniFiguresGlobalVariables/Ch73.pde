@@ -22,8 +22,6 @@ float ch73dx4; //Value for incrementing Y, as a function of period and yspacing
 float[] ch73yvalues4; //Using an array to store horizontal values for the wave
 float ch73maxAmplitude4; //max height for the wave
 
-float ch73yoff = 0.0; //noise for the amplitude of the wave
-
 void ch73Setup () {
   ch73period1 = width*0.6667;
   ch73dx1 = (TWO_PI / ch73period1) * ch73xspacing;
@@ -54,7 +52,7 @@ void ch73Draw () {
 }
 
 void ch73CalcWave() {
-  float f1 = map(noise(ch73yoff), 0, 1, 0, ch73maxAmplitude1);
+  float f1 = map(ampNoise1, min1, max1, 0, ch73maxAmplitude1);
   
   float x1 = staticTheta;
   for (int i = 0; i < ch73yvalues1.length; i++) {
@@ -62,7 +60,7 @@ void ch73CalcWave() {
     x1+=ch73dx1;
   }
 
-  float f2 = map(noise(ch73yoff), 0, 1, 0, ch73maxAmplitude2);
+  float f2 = map(ampNoise1, min1, max1, 0, ch73maxAmplitude2);
   
   float x2 = staticTheta;
   for (int i = 0; i < ch73yvalues2.length; i++) {
@@ -70,7 +68,7 @@ void ch73CalcWave() {
     x2+=ch73dx2;
   }
 
-  float f3 = map(noise(ch73yoff), 0, 1, 0, ch73maxAmplitude3);
+  float f3 = map(ampNoise1, min1, max1, 0, ch73maxAmplitude3);
   
   float x3 = staticTheta;
   for (int i = 0; i < ch73yvalues3.length; i++) {
@@ -78,21 +76,16 @@ void ch73CalcWave() {
     x3+=ch73dx3;
   }
 
-  float f4 = map(noise(ch73yoff), 0, 1, 0, ch73maxAmplitude4);
+  float f4 = map(ampNoise1, min1, max1, 0, ch73maxAmplitude4);
   
   float x4 = staticTheta;
   for (int i = 0; i < ch73yvalues4.length; i++) {
     ch73yvalues4[i] = sin(x4)*f4;
     x4+=ch73dx4;
   }
-  
-  ch73yoff += 0.01; //Try different values for speed at which the amplitude changes
 }
 
-void ch73RenderWave() {  
-  float col = map(noise(colNoise), 0, 1, 240, 360);
-  float oppCol = (360-col) + 240;
-  
+void ch73RenderWave() {
   pg.background(col, 70, 75);
   pg.noStroke();
   

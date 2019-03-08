@@ -6,15 +6,10 @@ float ch141period; //How many pixels before the wave repeats
 float ch141dx; //Value for incrementing Y, as a function of period and yspacing
 float[] ch141yvalues; //Using an array to store horizontal values for the wave
 
-float ch141yoff = 0.0; //noise for the amplitude of the wave
 float ch141maxAmplitude; //max height for the wave
 
-float ch141xNoise = 0.1;
-float ch141yNoise = 0.2;
-float ch141wNoise = 0.3; //noise for width of the ellipses
-
 float ch141x1,ch141x2;
-float ch141maxDisplacement = 20; //max number of pixels for shifting lines positive and negative, and width of the ellipses
+float ch141maxDisplacement; //max number of pixels for shifting lines positive and negative, and width of the ellipses
 
 void ch141Setup () {
   ch141period = width*0.667;
@@ -22,6 +17,8 @@ void ch141Setup () {
   ch141yvalues = new float[width/ch141xspacing];
   
   ch141maxAmplitude = height*0.05;
+  
+  ch141maxDisplacement = width * 0.1;
   
   ch141x1 = width*0.25;
   ch141x2 = width*0.75;
@@ -35,9 +32,7 @@ void ch141Draw () {
 }
 
 void ch141CalcWave() {  
-  float f = map(noise(ch141yoff), 0, 1, 0, ch141maxAmplitude);
-  
-  ch141yoff += 0.01; //Try different values for speed at which the amplitude changes
+  float f = map(ampNoise1, min1, max1, 0, ch141maxAmplitude);
   
   float x = negativeTheta;
   for (int i = 0; i < ch141yvalues.length; i++) {
@@ -48,13 +43,10 @@ void ch141CalcWave() {
   negativeTheta -= 0.02;
 }
 
-void ch141RenderWave() {  
-  float col = map(noise(colNoise), 0, 1, 240, 360);
-  float oppCol = (360-col) + 240;
-  
-  float xOffset = map(noise(ch141xNoise), 0, 1, -ch141maxDisplacement, ch141maxDisplacement);
-  float yOffset = map(noise(ch141yNoise), 0, 1, -ch141maxDisplacement, ch141maxDisplacement);
-  float wOffset = map(noise(ch141wNoise), 0, 1, -ch141maxDisplacement, ch141maxDisplacement);
+void ch141RenderWave() {
+  float xOffset = map(xNoise, min6, max6, -ch141maxDisplacement, ch141maxDisplacement);
+  float yOffset = map(yNoise, min7, max7, -ch141maxDisplacement, ch141maxDisplacement);
+  float wOffset = map(wNoise, min8, max8, -ch141maxDisplacement, ch141maxDisplacement);
   
   //pg.background(col, 70, 75);
   pg.noStroke();
@@ -129,8 +121,4 @@ void ch141RenderWave() {
   pg.vertex(0,height);
   pg.endShape();
   */
-  
-  ch141xNoise += 0.01;
-  ch141yNoise += 0.01;
-  ch141wNoise += 0.03;
 }

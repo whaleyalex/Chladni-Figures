@@ -6,7 +6,6 @@ float ch1period; //How many pixels before the wave repeats
 float ch1dy; //Value for incrementing Y, as a function of period and yspacing
 float[] ch1xvalues; //Using an array to store horizontal values for the wave
 
-float ch1xoff = 0.0; //noise for the amplitude of the wave
 float ch1maxAmplitude; //max height for the wave
 
 void ch1Setup () {
@@ -24,9 +23,7 @@ void ch1Draw () {
 }
 
 void ch1CalcWave() {
-  float f = map(noise(ch1xoff), 0, 1, 0, ch1maxAmplitude);
-  
-  ch1xoff += 0.01; //Try different values for speed at which the amplitude changes
+  float f = map(ampNoise1, min1, max1, 0, ch1maxAmplitude);
   
   float y = staticTheta;
   for (int i = 0; i < ch1xvalues.length; i++) {
@@ -35,9 +32,11 @@ void ch1CalcWave() {
   }
 }
 
-void ch1RenderWave() {  
-  float col = map(noise(colNoise), 0, 1, 240, 360);
-  float oppCol = (360-col) + 240;
+void ch1RenderWave() {
+  pg.fill(col,100,100);
+  pg.rect(0,0,width,height);
+  //^Background code, add Z Value, popMatrix(); translate(0,0,0); //Background start at z value of zero and all other shapes incremented on top //OR// Place rectangle far back in Z and make large to extend past borders, 0 Z for the center of the shape
+  
   
   //pg.background(col, 70, 75);
   pg.noStroke();

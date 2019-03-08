@@ -6,15 +6,10 @@ float ch136period; //How many pixels before the wave repeats
 float ch136dx; //Value for incrementing Y, as a function of period and yspacing
 float[] ch136yvalues; //Using an array to store horizontal values for the wave
 
-float ch136yoff = 0.0; //noise for the amplitude of the wave
 float ch136maxAmplitude; //max height for the wave
 
-float ch136xNoise = 0.1;
-float ch136yNoise = 0.2;
-float ch136wNoise = 0.3; //noise for width of the ellipses
-
 float ch136x1,ch136x2,ch136y1,ch136y2;
-float ch136maxDisplacement = 20; //max number of pixels for shifting lines positive and negative, and width of the ellipses
+float ch136maxDisplacement; //max number of pixels for shifting lines positive and negative, and width of the ellipses
 
 void ch136Setup () {
   ch136period = width*0.667;
@@ -22,6 +17,8 @@ void ch136Setup () {
   ch136yvalues = new float[width/ch136xspacing];
   
   ch136maxAmplitude = height*0.125;
+  
+  ch136maxDisplacement = width * 0.1;
   
   ch136x1 = width*0.25;
   ch136x2 = width*0.75;
@@ -37,10 +34,7 @@ void ch136Draw () {
 }
 
 void ch136CalcWave() {
-  
-  float f = map(noise(ch136yoff), 0, 1, 0, ch136maxAmplitude);
-  
-  ch136yoff += 0.01; //Try different values for speed at which the amplitude changes
+  float f = map(ampNoise1, min1, max1, 0, ch136maxAmplitude);
   
   float x = staticTheta;
   for (int i = 0; i < ch136yvalues.length; i++) {
@@ -50,12 +44,9 @@ void ch136CalcWave() {
 }
 
 void ch136RenderWave() {  
-  float col = map(noise(colNoise), 0, 1, 240, 360);
-  float oppCol = (360-col) + 240;
-  
-  float xOffset = map(noise(ch136xNoise), 0, 1, -ch136maxDisplacement, ch136maxDisplacement);
-  float yOffset = map(noise(ch136yNoise), 0, 1, -ch136maxDisplacement, ch136maxDisplacement);
-  float wOffset = map(noise(ch136wNoise), 0, 1, -ch136maxDisplacement, ch136maxDisplacement);
+  float xOffset = map(xNoise, min6, max6, -ch136maxDisplacement, ch136maxDisplacement);
+  float yOffset = map(yNoise, min7, max7, -ch136maxDisplacement, ch136maxDisplacement);
+  float wOffset = map(wNoise, min8, max8, -ch136maxDisplacement, ch136maxDisplacement);
   
   //pg.background(col, 70, 75);
   pg.noStroke();
@@ -133,8 +124,4 @@ void ch136RenderWave() {
   pg.vertex(0,height);
   pg.endShape();
   */
-  
-  ch136xNoise += 0.01;
-  ch136yNoise += 0.01;
-  ch136wNoise += 0.03;
 }

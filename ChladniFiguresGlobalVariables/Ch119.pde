@@ -1,25 +1,19 @@
 //ChladniFigure119
 
-float ch119xNoise = 0.1;
-float ch119yNoise = 0.2;
-float ch119wNoise = 0.3; //noise for width of the ellipses
-
-float ch119maxDisplacement = 20; //max number of pixels for shifting lines positive and negative, and width of the ellipses
-float ch119widthDisplacement = 30; //max number of pixels for shifting width of the ellipses
+float ch119maxDisplacement; //max number of pixels for shifting lines positive and negative, and width of the ellipses
+float ch119widthDisplacement; //max number of pixels for shifting width of the ellipses
 
 void ch119Setup () {
-  
+  ch119maxDisplacement = height*0.1; //max number of pixels for shifting lines positive and negative, and width of the ellipses
+  ch119widthDisplacement = width*0.125;
 }
 
 void ch119Draw () {
   pg.beginDraw();
   
-  float col = map(noise(colNoise), 0, 1, 240, 360);
-  float oppCol = (360-col) + 240;
-  
-  float xOffset = map(noise(ch119xNoise), 0, 1, -ch119maxDisplacement, ch119maxDisplacement);
-  float yOffset = map(noise(ch119yNoise), 0, 1, -ch119maxDisplacement, ch119maxDisplacement);
-  float wOffset = map(noise(ch119wNoise), 0, 1, -ch119widthDisplacement, ch119widthDisplacement);
+  float xOffset = map(xNoise, min6, max6, -ch119maxDisplacement, ch119maxDisplacement);
+  float yOffset = map(yNoise, min7, max7, -ch119maxDisplacement, ch119maxDisplacement);
+  float wOffset = map(wNoise, min8, max8, -ch119widthDisplacement, ch119widthDisplacement);
   
   //pg.background(col, 70, 75);
   pg.noStroke();
@@ -49,8 +43,4 @@ void ch119Draw () {
   pg.ellipse((width*0.85)+xOffset, (height*0.75)+yOffset, (width*0.4)+wOffset, (height*0.333));
   
   pg.endDraw();
-  
-  ch119xNoise += 0.01;
-  ch119yNoise += 0.01;
-  ch119wNoise += 0.03;
 }

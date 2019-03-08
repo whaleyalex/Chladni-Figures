@@ -1,9 +1,6 @@
 //ChladniFigure111
 
-float ch111xNoise = 0.1;
-float ch111yNoise = 0.2;
-
-float ch111maxDisplacement = 20; //max number of pixels for shifting lines positive and negative;
+float ch111maxDisplacement; //max number of pixels for shifting lines positive and negative;
 
 float ch111x1,ch111x2,ch111x3;
 float ch111y1,ch111y2,ch111y3;
@@ -15,16 +12,15 @@ void ch111Setup () {
   ch111y1 = height*0.125;
   ch111y2 = height*0.5;
   ch111y3 = height*0.875;
+  
+  ch111maxDisplacement = height*0.1;
 }
 
 void ch111Draw () {
   pg.beginDraw();
   
-  float col = map(noise(colNoise), 0, 1, 240, 360);
-  float oppCol = (360-col) + 240;
-  
-  float xOffset = map(noise(ch111xNoise), 0, 1, -ch111maxDisplacement, ch111maxDisplacement);
-  float yOffset = map(noise(ch111yNoise), 0, 1, -ch111maxDisplacement, ch111maxDisplacement);
+  float xOffset = map(xNoise, min6, max6, -ch111maxDisplacement, ch111maxDisplacement);
+  float yOffset = map(yNoise, min7, max7, -ch111maxDisplacement, ch111maxDisplacement);
   
   //pg.background(col, 70, 75);
   pg.noStroke();
@@ -82,7 +78,4 @@ void ch111Draw () {
   
   
   pg.endDraw();
-  
-  ch111xNoise += 0.01;
-  ch111yNoise += 0.01;
 }

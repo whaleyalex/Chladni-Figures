@@ -5,7 +5,6 @@ float ch126period; //pixels before wave repeats
 float ch126dx; //Value for incrementing X, a function of period and xspacing
 float[] ch126yvalues; //An array to store the height values for the wave
 
-float ch126yoff = 0.0; //noise for the amplitude of the wave
 float ch126maxAmplitude; //max height for the wave
 
 float ch126spacing; //pixel spacing value for wave placement
@@ -27,9 +26,7 @@ void ch126Draw () {
 }
 
 void ch126CalcWave() {
-  float f = map(noise(ch126yoff), 0, 1, 0, ch126maxAmplitude);
-  
-  ch126yoff += 0.01; //Try different values for speed at which the amplitude changes
+  float f = map(ampNoise1, min1, max1, 0, ch126maxAmplitude);
   
   //For every x value, calculate a y value with a sine function
   float x = negativeTheta;
@@ -43,8 +40,6 @@ void ch126CalcWave() {
 
 void ch126RenderWave() {
   //pg.pushMatrix();
-
-  float col = map(noise(colNoise), 0, 1, 0, 360);
   
   pg.background(col, 100, 100);
   pg.noStroke();
@@ -54,7 +49,7 @@ void ch126RenderWave() {
   pg.translate(-width/2,0);
   
   
-  pg.fill(360-col, 100, 100);
+  pg.fill(oppCol, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch126yvalues.length; x++) {
     pg.vertex(x*ch126xspacing, ((height/2)-(7*ch126spacing))-ch126yvalues[x]);
@@ -72,7 +67,7 @@ void ch126RenderWave() {
   pg.vertex(0, height*2);
   pg.endShape();
   
-  pg.fill(360-col, 100, 100);
+  pg.fill(oppCol, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch126yvalues.length; x++) {
     pg.vertex(x*ch126xspacing, ((height/2)-(3*ch126spacing))-ch126yvalues[x]);
@@ -90,7 +85,7 @@ void ch126RenderWave() {
   pg.vertex(0, height*2);
   pg.endShape();
   
-  pg.fill(360-col, 100, 100);
+  pg.fill(oppCol, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch126yvalues.length; x++) {
     pg.vertex(x*ch126xspacing, ((height/2)+(ch126spacing))-ch126yvalues[x]);
@@ -108,7 +103,7 @@ void ch126RenderWave() {
   pg.vertex(0, height*2);
   pg.endShape();
   
-  pg.fill(360-col, 100, 100);
+  pg.fill(oppCol, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch126yvalues.length; x++) {
     pg.vertex(x*ch126xspacing, ((height/2)+(5*ch126spacing))-ch126yvalues[x]);

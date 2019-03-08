@@ -11,14 +11,47 @@ float negativeTheta = 0.0; //negative direction movement;
 float rot = 0; //angle of rotation
 
 float colNoise = 0.1; //noise for color of Chladni figures
-float zNoise = 0.2; //noise for scale factors
+float oppCol = 0.0; //opposite value for color
+float col = 0.0; //value for the color mapped
+float zNoise = 0.2; //not implemented yet
+
+//values for the noise functions
+float amp1 = 0.0;
+float amp2 = 0.1;
+float amp3 = 0.2;
+float amp4 = 0.3;
+float amp5 = 0.4;
+float x1 = 0.5;
+float y1 = 0.6;
+float w1 = 0.7;
+
+//noise variables to be replaced with variables from audio input. Min and max values are used for mapping. Replace with min and max for input from audio.
+float ampNoise1;
+float min1 = 0;
+float max1 = 1;
+float ampNoise2;
+float min2 = 0;
+float max2 = 1;
+float ampNoise3;
+float min3 = 0;
+float max3 = 1;
+float ampNoise4;
+float min4 = 0;
+float max4 = 1;
+float ampNoise5;
+float min5 = 0;
+float max5 = 1;
+float xNoise;
+float min6 = 0;
+float max6 = 1;
+float yNoise;
+float min7 = 0;
+float max7 = 1;
+float wNoise;
+float min8 = 0;
+float max8 = 1;
 
 PShape circle; //circular PShape
-
-//Constants for Gradient
-int Y_AXIS = 1;
-int X_AXIS = 2;
-color c1, c2;
 
 void setup() {
   size(512, 512, P3D);
@@ -37,7 +70,6 @@ void setup() {
   ch75Setup();
   ch89Setup();
   ch90Setup();
-  ch91Setup();
   ch94Setup();
   ch97Setup();
   ch106Setup();
@@ -53,17 +85,23 @@ void setup() {
   ch137Setup();
   ch139Setup();
   ch141Setup();
-  
-  //pg.blendMode(REPLACE);
-  
-  //c1 = color(255, 0, 0);
-  //c2 = color(0, 0, 255);
     
   //frameRate(24);
 }
 
 void draw() {
   pg.colorMode(HSB,360,100,100);
+  col = map(noise(colNoise), 0, 1, 240, 360);
+  oppCol = (360-col) + 240; //calculate the opposite value for color
+  
+  ampNoise1 = noise(amp1);
+  ampNoise2 = noise(amp2);
+  ampNoise3 = noise(amp3);
+  ampNoise4 = noise(amp4);
+  ampNoise5 = noise(amp5);
+  xNoise = noise(x1);
+  yNoise = noise(y1);
+  wNoise = noise(w1);
   
   switch (caseNum) { //determines which Chladni Figure is shown for which number key is pressed
     case 1:
@@ -94,57 +132,65 @@ void draw() {
       ch90Draw();
     break;
     case 10:
-      ch126Draw(); //repeat REPLACE 126
-    break;
-    case 11:
       ch94Draw();
     break;
-    case 12:
+    case 11:
       ch97Draw();
     break;
-    case 13:
+    case 12:
       ch106Draw();
     break;
-    case 14:
+    case 13:
       ch108Draw();
     break;
-    case 15:
+    case 14:
       ch109Draw();
     break;
-    case 16:
+    case 15:
       ch111Draw();
     break;
-    case 17:
+    case 16:
       ch113Draw();
     break;
-    case 18:
+    case 17:
       ch115Draw();
     break;
-    case 19:
+    case 18:
       ch119Draw();
     break;
-    case 20:
+    case 19:
       ch126Draw();
     break;
-    case 21:
+    case 20:
       ch130Draw();
     break;
-    case 22:
+    case 21:
       ch136Draw();
     break;
-    case 23:
+    case 22:
       ch137Draw();
     break;
-    case 24:
+    case 23:
       ch139Draw();
     break;
-    case 25:
+    case 24:
       ch141Draw();
     break;
   }
   
+  //Increment Noise Variables
+  
   colNoise += 0.01; //increment value of noise for color
   zNoise += 0.01; //noise for z translation
+  
+  amp1 +=0.01;
+  amp2 +=0.01;
+  amp3 +=0.01;
+  amp4 +=0.01;
+  amp5 +=0.01;
+  x1 +=0.01;
+  y1 +=0.01;
+  w1 +=0.01;
   
   rot++;
   if (rot == 361) { //reset rotation angle
@@ -235,9 +281,6 @@ void keyPressed() { //keybinding for the Chladni figures
   else if (key == 'f') {
     caseNum = 24;
   }
-  else if (key == 'g') {
-    caseNum = 25;
-  }
   else if (key == 'z') {
     pg.blendMode(REPLACE);
   }
@@ -258,27 +301,5 @@ void keyPressed() { //keybinding for the Chladni figures
   }
   else if (key == 'm') {
     pg.blendMode(EXCLUSION);
-  }
-}
-
-void setGradient(int x, int y, float w, float h, color c1, color c2, int axis ) {
-
-  noFill();
-
-  if (axis == Y_AXIS) {  // Top to bottom gradient
-    for (int i = y; i <= y+h; i++) {
-      float inter = map(i, y, y+h, 0, 1);
-      color c = lerpColor(c1, c2, inter);
-      stroke(c);
-      line(x, i, x+w, i);
-    }
-  }  
-  else if (axis == X_AXIS) {  // Left to right gradient
-    for (int i = x; i <= x+w; i++) {
-      float inter = map(i, x, x+w, 0, 1);
-      color c = lerpColor(c1, c2, inter);
-      stroke(c);
-      line(i, y, i, y+h);
-    }
   }
 }
