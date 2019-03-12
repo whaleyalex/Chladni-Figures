@@ -53,13 +53,38 @@ float wNoise;
 float min8 = 0;
 float max8 = 1;
 
+boolean scene1 = true;
+boolean scene37 = false;
+boolean scene50 = false;
+boolean scene62 = false;
+boolean scene67 = false;
+boolean scene73 = false;
+boolean scene75 = false;
+boolean scene89 = false;
+boolean scene90 = false;
+boolean scene94 = false;
+boolean scene97 = false;
+boolean scene106 = false;
+boolean scene108 = false;
+boolean scene109 = false;
+boolean scene111 = false;
+boolean scene113 = false;
+boolean scene115 = false;
+boolean scene119 = false;
+boolean scene126 = false;
+boolean scene130 = false;
+boolean scene136 = false;
+boolean scene137 = false;
+boolean scene139 = false;
+boolean scene141 = false;
+
 boolean fill = true; //use outlines of filled in shapes for the figures
 
 PShape circle; //circular PShape
 
 void setup() {
   size(512, 512, P3D);
-  pg = createGraphics(dim,dim);
+  pg = createGraphics(dim,dim,P3D);
   textureMode(NORMAL);
   
   circle = loadShape("CircleHole.svg");
@@ -109,6 +134,201 @@ void draw() {
   
   zNoise = noise(z1);
   
+  //DRAW THE SELECTED FIGURES
+  if (scene1) {
+    if (fill) {
+      ch1Draw();    
+    }
+    else {
+      ch1DrawOutlines();  
+    }
+  }
+  if (scene37) {
+    if (fill) {
+      ch37Draw();    
+    }
+    else {
+      ch37DrawOutlines();  
+    }
+  }
+  if (scene50) {
+    if (fill) {
+      ch50Draw();    
+    }
+    else {
+      ch50DrawOutlines();  
+    }
+  }
+  if (scene62) {
+    if (fill) {
+      ch62Draw();    
+    }
+    else {
+      ch62DrawOutlines();  
+    }
+  }
+  if (scene67) {
+    if (fill) {
+      ch67Draw();    
+    }
+    else {
+      ch67DrawOutlines();  
+    }
+  }
+  if (scene73) {
+    if (fill) {
+      ch73Draw();    
+    }
+    else {
+      ch73DrawOutlines();  
+    }
+  }
+  if (scene75) {
+    if (fill) {
+      ch75Draw();    
+    }
+    else {
+      ch75DrawOutlines();  
+    }
+  }
+  if (scene89) {
+    if (fill) {
+      ch89Draw();    
+    }
+    else {
+      ch89DrawOutlines();  
+    }
+  }
+  if (scene90) {
+    if (fill) {
+      ch90Draw();    
+    }
+    else {
+      ch90DrawOutlines();  
+    }
+  }
+  if (scene94) {
+    if (fill) {
+      ch94Draw();    
+    }
+    else {
+      ch94DrawOutlines();  
+    }
+  }
+  if (scene97) {
+    if (fill) {
+      ch97Draw();    
+    }
+    else {
+      ch97DrawOutlines();  
+    }
+  }
+  if (scene106) {
+    if (fill) {
+      ch106Draw();    
+    }
+    else {
+      ch106DrawOutlines();  
+    }
+  }
+  if (scene108) {
+    if (fill) {
+      ch108Draw();    
+    }
+    else {
+      ch108DrawOutlines();  
+    }
+  }
+  if (scene109) {
+    if (fill) {
+      ch109Draw();    
+    }
+    else {
+      ch109DrawOutlines();  
+    }
+  }
+  if (scene111) {
+    if (fill) {
+      ch111Draw();    
+    }
+    else {
+      ch111DrawOutlines();  
+    }
+  }
+  if (scene113) {
+    if (fill) {
+      ch113Draw();    
+    }
+    else {
+      ch113DrawOutlines();  
+    }
+  }
+  if (scene115) {
+    if (fill) {
+      ch115Draw();    
+    }
+    else {
+      ch115DrawOutlines();  
+    }
+  }
+  if (scene119) {
+    if (fill) {
+      ch119Draw();    
+    }
+    else {
+      ch119DrawOutlines();  
+    }
+  }
+  if (scene126) {
+    if (fill) {
+      ch126Draw();    
+    }
+    else {
+      ch126DrawOutlines();  
+    }
+  }
+  if (scene130) {
+    if (fill) {
+      ch130Draw();    
+    }
+    else {
+      ch130DrawOutlines();  
+    }
+  }
+  if (scene136) {
+    if (fill) {
+      ch136Draw();    
+    }
+    else {
+      ch136DrawOutlines();  
+    }
+  }
+  if (scene137) {
+    if (fill) {
+      ch137Draw();    
+    }
+    else {
+      ch137DrawOutlines();  
+    }
+  }
+  if (scene139) {
+    if (fill) {
+      ch139Draw();    
+    }
+    else {
+      ch139DrawOutlines();  
+    }
+  }
+  if (scene141) {
+    if (fill) {
+      ch141Draw();    
+    }
+    else {
+      ch141DrawOutlines();  
+    }
+  }
+  
+  //DRAW THE MOST RECENTLY SELECTED FIGURE ON TOP
   switch (caseNum) { //determines which Chladni Figure is shown for which number key is pressed
     case 1:
       if (fill) {
@@ -339,76 +559,100 @@ void draw() {
 
 void keyPressed() { //keybinding for the Chladni figures
   if (key == '1') {
-    caseNum = 1;
+    scene1 = !scene1;
+    if (scene1) { caseNum = 1; }
   }
   else if (key == '2') {
-    caseNum = 2;
+    scene37 = !scene37;
+    if (scene37) { caseNum = 2; }
   }
   else if (key == '3') {
-    caseNum = 3;
+    scene50 = !scene50;
+    if (scene50) { caseNum = 3; }
   }
   else if (key == '4') {
-    caseNum = 4;
+    scene62 = !scene62;
+    if (scene62) { caseNum = 4; }
   }
   else if (key == '5') {
-    caseNum = 5;
+    scene67 = !scene67;
+    if (scene67) { caseNum = 5; }
   }
   else if (key == '6') {
-    caseNum = 6;
+    scene73 = !scene73;
+    if (scene73) { caseNum = 6; }
   }
   else if (key == '7') {
-    caseNum = 7;
+    scene75 = !scene75;
+    if (scene75) { caseNum = 7; }
   }
   else if (key == '8') {
-    caseNum = 8;
+    scene89 = !scene89;
+    if (scene89) { caseNum = 8; }
   }
   else if (key == '9') {
-    caseNum = 9;
+    scene90 = !scene90;
+    if (scene90) { caseNum = 9; }
   }
   else if (key == '0') {
-    caseNum = 10;
+    scene94 = !scene94;
+    if (scene94) { caseNum = 10; }
   }
   else if (key == 'q') {
-    caseNum = 11; 
+    scene97 = !scene97;
+    if (scene97) { caseNum = 11; }
   }
   else if (key == 'w') {
-    caseNum = 12;
+    scene106 = !scene106;
+    if (scene106) { caseNum = 12; }
   }
   else if (key == 'e') {
-    caseNum = 13;
+    scene108 = !scene108;
+    if (scene108) { caseNum = 13; }
   }
   else if (key == 'r') {
-    caseNum = 14;
+    scene109 = !scene109;
+    if (scene109) { caseNum = 14; }
   }
   else if (key == 't') {
-    caseNum = 15;
+    scene111 = !scene111;
+    if (scene111) { caseNum = 15; }
   }
   else if (key == 'y') {
-    caseNum = 16;
+    scene113 = !scene113;
+    if (scene113) { caseNum = 16; }
   }
   else if (key == 'u') {
-    caseNum = 17;
+    scene115 = !scene115;
+    if (scene115) { caseNum = 17; }
   }
   else if (key == 'i') {
-    caseNum = 18;
+    scene119 = !scene119;
+    if (scene119) { caseNum = 18; }
   }
   else if (key == 'o') {
-    caseNum = 19;
+    scene126 = !scene126;
+    if (scene126) { caseNum = 19; }
   }
   else if (key == 'p') {
-    caseNum = 20;
+    scene130 = !scene130;
+    if (scene130) { caseNum = 20; }
   }
   else if (key == 'a') {
-    caseNum = 21;
+    scene136 = !scene136;
+    if (scene136) { caseNum = 21; }
   }
   else if (key == 's') {
-    caseNum = 22;
+    scene137 = !scene137;
+    if (scene137) { caseNum = 22; }
   }
   else if (key == 'd') {
-    caseNum = 23;
+    scene139 = !scene139;
+    if (scene139) { caseNum = 23; }
   }
   else if (key == 'f') {
-    caseNum = 24;
+    scene141 = !scene141;
+    if (scene141) { caseNum = 24; }
   }
   else if (key == 'z') {
     pg.blendMode(REPLACE);

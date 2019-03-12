@@ -65,13 +65,13 @@ void ch37RenderWave() {
   pg.noStroke();
     
   pg.pushMatrix();
-  pg.translate(0,0);
+  pg.translate(0,0,-100);
   pg.rect(0,0,width,height);
   //pg.background(col, 100, 100);
   pg.popMatrix();
     
   pg.pushMatrix();
-  pg.translate(width/2,height/2);
+  pg.translate(width/2,height/2,-80);
   pg.rotate(radians(rot));
   //pg.scale(map(scaleNoise,0,1,0.75,1.1)); //because of how scale works, the scale can change differently depending on the previous scale
   
