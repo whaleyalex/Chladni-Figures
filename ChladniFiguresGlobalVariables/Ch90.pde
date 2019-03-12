@@ -26,6 +26,13 @@ void ch90Draw () {
   pg.endDraw();
 }
 
+void ch90DrawOutlines () {
+  pg.beginDraw();
+  ch90CalcWave();
+  ch90RenderOutlines();
+  pg.endDraw();
+}
+
 void ch90CalcWave() {
   float f = map(ampNoise1, min1, max1, 0, ch90maxAmplitude);
   
@@ -37,8 +44,9 @@ void ch90CalcWave() {
 }
 
 void ch90RenderWave() {
-  pg.background(col, 100, 100);
+  pg.fill(col, 100, 100);
   pg.noStroke();
+  pg.rect(0,0,width,height);
   
   pg.fill(oppCol, 100, 100);
   pg.beginShape();
@@ -55,5 +63,28 @@ void ch90RenderWave() {
   }
   pg.vertex(width/2,height);
   pg.vertex(width/2,0);
+  pg.endShape();
+}
+
+void ch90RenderOutlines() {
+  pg.stroke(col, 100, 100);
+  pg.strokeWeight(width/100);
+  pg.noFill();
+  
+  pg.stroke(oppCol, 100, 100);
+  pg.beginShape();
+  for (int y = 0; y < ch90xvalues.length; y++) {
+    pg.vertex((width/2)+(ch90dist)+ch90xvalues[y],y*ch90yspacing);
+  }
+  //pg.vertex(width/2,height);
+  //pg.vertex(width/2,0);
+  pg.endShape();
+  
+  pg.beginShape();
+  for (int y = 0; y < ch90xvalues.length; y++) {
+    pg.vertex((width/2)-(ch90dist)-ch90xvalues[y],y*ch90yspacing);
+  }
+  //pg.vertex(width/2,height);
+  //pg.vertex(width/2,0);
   pg.endShape();
 }

@@ -42,6 +42,13 @@ void ch113Draw () {
   pg.endDraw();
 }
 
+void ch113DrawOutlines () {
+  pg.beginDraw();
+  ch113CalcWave();
+  ch113RenderOutlines();
+  pg.endDraw();
+}
+
 void ch113CalcWave() {
   float f1 = map(ampNoise1, min1, max1, 0, ch113maxAmplitude1);
     
@@ -66,8 +73,10 @@ void ch113CalcWave() {
 }
 
 void ch113RenderWave() {
-  pg.background(col, 100, 100);
+  pg.fill(col, 100, 100);
   pg.noStroke();
+  
+  pg.rect(0,0,width,height);
   
   pg.fill(oppCol, 100, 100);
   pg.beginShape();
@@ -86,6 +95,36 @@ void ch113RenderWave() {
   pg.endShape();
   
   pg.fill(oppCol, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch113yvalues3.length; x++) {
+    pg.curveVertex(ch113xvalues3[x]+(width/2),ch113yvalues3[x]+(height/2));
+  }
+  pg.curveVertex(ch113xvalues3[0]+(width/2), ch113yvalues3[0]+(height/2));
+  pg.endShape();  
+}
+
+void ch113RenderOutlines() {
+  pg.stroke(col, 100, 100);
+  pg.strokeWeight(width/100);
+  pg.noFill();
+  
+  pg.stroke(oppCol, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch113yvalues1.length; x++) {
+    pg.curveVertex(ch113xvalues1[x]+(width/2),ch113yvalues1[x]+(height/2));
+  }
+  pg.curveVertex(ch113xvalues1[0]+(width/2), ch113yvalues1[0]+(height/2));
+  pg.endShape();
+  
+  pg.stroke(col, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch113yvalues2.length; x++) {
+    pg.curveVertex(ch113xvalues2[x]+(width/2),ch113yvalues2[x]+(height/2));
+  }
+  pg.curveVertex(ch113xvalues2[0]+(width/2), ch113yvalues2[0]+(height/2));
+  pg.endShape();
+  
+  pg.stroke(oppCol, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch113yvalues3.length; x++) {
     pg.curveVertex(ch113xvalues3[x]+(width/2),ch113yvalues3[x]+(height/2));

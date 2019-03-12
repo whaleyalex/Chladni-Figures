@@ -24,6 +24,13 @@ void ch75Draw () {
   pg.endDraw();
 }
 
+void ch75DrawOutlines () {
+  pg.beginDraw();
+  ch75CalcWave();
+  ch75RenderOutlines();
+  pg.endDraw();
+}
+
 void ch75CalcWave() {
   float f1 = map(ampNoise1, min1, max1, 0, ch75maxAmplitude1);
     
@@ -34,8 +41,10 @@ void ch75CalcWave() {
 }
 
 void ch75RenderWave() {
-  pg.background(col, 100, 100);
+  pg.fill(col, 100, 100);
   pg.noStroke();
+  
+  pg.rect(0,0,width,height);
   
   pg.fill(oppCol, 100, 100);
   pg.beginShape();
@@ -51,7 +60,28 @@ void ch75RenderWave() {
   pg.fill(col, 100, 100);
   pg.ellipse(width/2,height/2,(width*0.4)+xoff,(height*0.5)+yoff);
   
-  circle.disableStyle();
-  pg.fill(oppCol, 70, 75);
-  pg.shape(circle,0,0,width,height);
+  //circle.disableStyle();
+  //pg.fill(oppCol, 70, 75);
+  //pg.shape(circle,0,0,width,height);
+}
+
+void ch75RenderOutlines() {
+  pg.stroke(col, 100, 100);
+  pg.strokeWeight(width/100);
+  pg.noFill();
+  //pg.rect(0,0,width,height);
+  
+  pg.stroke(oppCol, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch75yvalues1.length; x++) {
+    pg.curveVertex(ch75xvalues1[x]+(width/2),ch75yvalues1[x]+(height/2));
+  }
+  pg.curveVertex(ch75xvalues1[0]+(width/2), ch75yvalues1[0]+(height/2));
+  pg.endShape();
+  
+  float xoff = map(xNoise, min6, max6, -ch75maxDisplacement, ch75maxDisplacement);
+  float yoff = map(yNoise, min7, max7, -ch75maxDisplacement, ch75maxDisplacement);
+  
+  pg.stroke(col, 100, 100);
+  pg.ellipse(width/2,height/2,(width*0.4)+xoff,(height*0.5)+yoff); 
 }

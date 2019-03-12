@@ -31,6 +31,13 @@ void ch141Draw () {
   pg.endDraw();
 }
 
+void ch141DrawOutlines () {
+  pg.beginDraw();
+  ch141CalcWave();
+  ch141RenderOutlines();
+  pg.endDraw();
+}
+
 void ch141CalcWave() {  
   float f = map(ampNoise1, min1, max1, 0, ch141maxAmplitude);
   
@@ -121,4 +128,71 @@ void ch141RenderWave() {
   pg.vertex(0,height);
   pg.endShape();
   */
+}
+
+void ch141RenderOutlines() {
+  float xOffset = map(xNoise, min6, max6, -ch141maxDisplacement, ch141maxDisplacement);
+  float yOffset = map(yNoise, min7, max7, -ch141maxDisplacement, ch141maxDisplacement);
+  float wOffset = map(wNoise, min8, max8, -ch141maxDisplacement, ch141maxDisplacement);
+  
+  pg.stroke(col, 100, 100);
+  pg.strokeWeight(width/100);
+  pg.noFill();
+  
+  pg.stroke(col, 70, 75);
+  pg.rect(0,0,ch141x1+xOffset,(height/2)+yOffset);
+  
+  pg.stroke(oppCol, 70, 75);
+  pg.ellipse(0+xOffset, (height/4)+yOffset, (height/4)+wOffset, height/4);
+  
+  pg.stroke(oppCol, 70, 75);
+  pg.rect(ch141x1+xOffset,0,ch141x2-ch141x1,(height/2)+yOffset);
+  
+  pg.stroke(col, 70, 75);
+  pg.ellipse((width/2)+xOffset, (height/4)+yOffset, (height/4)+wOffset, height/4);
+  
+  pg.stroke(col, 70, 75);
+  pg.rect(ch141x2+xOffset,0,width-(ch141x2+xOffset),(height/2)+yOffset);
+  
+  pg.stroke(oppCol, 70, 75);
+  pg.ellipse(width+xOffset, (height/4)+yOffset, (height/4)+wOffset, height/4);
+  
+   
+  pg.stroke(oppCol, 70, 75);
+  pg.rect(0,height/2+yOffset,ch141x1+xOffset,(height/2)+yOffset);
+  
+  pg.stroke(col, 70, 75);
+  pg.ellipse(0+xOffset, (height*0.75)+yOffset, (height/4)+wOffset, height/4);
+  
+  pg.stroke(col, 70, 75);
+  pg.rect(ch141x1+xOffset,height/2+yOffset,ch141x2-ch141x1,(height/2)+yOffset);
+  
+  pg.stroke(oppCol, 70, 75);
+  pg.ellipse((width/2)+xOffset, (height*0.75)+yOffset, (height/4)+wOffset, height/4);
+  
+  pg.stroke(oppCol, 70, 75);
+  pg.rect(ch141x2+xOffset,height/2+yOffset,width-(ch141x2+xOffset),(height/2)+yOffset);
+  
+  pg.stroke(col, 70, 75);
+  pg.ellipse(width+xOffset, (height*0.75)+yOffset, (height/4)+wOffset, height/4);
+  
+  
+  pg.stroke(col, 70, 50);
+  pg.beginShape();
+  for (int x = 0; x < ch141yvalues.length; x++) {
+    pg.vertex(x*ch141xspacing,(height*0.1)+ch141yvalues[x]);
+  }
+  //pg.vertex(width,0);
+  //pg.vertex(0,0);
+  pg.endShape();
+  
+  pg.stroke(oppCol, 70, 50);
+  pg.beginShape();
+  for (int x = 0; x < ch141yvalues.length; x++) {
+    pg.vertex(x*ch141xspacing,(height*0.9)-ch141yvalues[x]);
+  }
+  //pg.vertex(width,height);
+  //pg.vertex(0,height);
+  pg.endShape();
+  
 }

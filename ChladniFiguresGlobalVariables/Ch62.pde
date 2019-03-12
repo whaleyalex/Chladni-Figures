@@ -68,6 +68,13 @@ void ch62Draw () {
   pg.endDraw();
 }
 
+void ch62DrawOutlines () {
+  pg.beginDraw();
+  ch62CalcWave();
+  ch62RenderOutlines();
+  pg.endDraw();
+}
+
 void ch62CalcWave() {
   float f1 = map(ampNoise1, min1, max1, 0, ch62maxAmplitude1);
     
@@ -106,8 +113,10 @@ void ch62CalcWave() {
 }
 
 void ch62RenderWave() {
-  pg.background(col, 100, 100);
+  pg.fill(col, 100, 100);
   pg.noStroke();
+  
+  pg.rect(0,0,width,height);
   
   pg.fill(oppCol, 100, 100);
   pg.beginShape();
@@ -155,7 +164,60 @@ void ch62RenderWave() {
   pg.fill(col, 100, 100);
   pg.ellipse(width/2,height/2,(width*0.28)+xoff,(height*0.28)+yoff);
   
-  circle.disableStyle();
-  pg.fill(oppCol, 70, 75);
-  pg.shape(circle,0,0,width,height);
+  //circle.disableStyle();
+  //pg.fill(oppCol, 70, 75);
+  //pg.shape(circle,0,0,width,height);
+}
+
+void ch62RenderOutlines() {
+  pg.stroke(col, 100, 100);
+  pg.strokeWeight(width/100);
+  pg.noFill();
+  //pg.rect(0,0,width,height); 
+  
+  pg.stroke(oppCol, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch62yvalues1.length; x++) {
+    pg.curveVertex(ch62xvalues1[x]+(width/2),ch62yvalues1[x]+(height/2));
+  }
+  pg.curveVertex(ch62xvalues1[0]+(width/2), ch62yvalues1[0]+(height/2));
+  pg.endShape();
+  
+  pg.stroke(col, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch62yvalues2.length; x++) {
+    pg.curveVertex(ch62xvalues2[x]+(width/2),ch62yvalues2[x]+(height/2));
+  }
+  pg.curveVertex(ch62xvalues2[0]+(width/2), ch62yvalues2[0]+(height/2));
+  pg.endShape();
+  
+  pg.stroke(oppCol, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch62yvalues3.length; x++) {
+    pg.curveVertex(ch62xvalues3[x]+(width/2),ch62yvalues3[x]+(height/2));
+  }
+  pg.curveVertex(ch62xvalues3[0]+(width/2), ch62yvalues3[0]+(height/2));
+  pg.endShape();
+  
+  pg.stroke(col, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch62yvalues4.length; x++) {
+    pg.curveVertex(ch62xvalues4[x]+(width/2),ch62yvalues4[x]+(height/2));
+  }
+  pg.curveVertex(ch62xvalues4[0]+(width/2), ch62yvalues4[0]+(height/2));
+  pg.endShape();
+  
+  pg.stroke(oppCol, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch62yvalues5.length; x++) {
+    pg.curveVertex(ch62xvalues5[x]+(width/2),ch62yvalues5[x]+(height/2));
+  }
+  pg.curveVertex(ch62xvalues5[0]+(width/2), ch62yvalues5[0]+(height/2));
+  pg.endShape();
+  
+  float xoff = map(xNoise, min6, max6, -ch62maxDisplacement, ch62maxDisplacement);
+  float yoff = map(yNoise, min7, max7, -ch62maxDisplacement, ch62maxDisplacement);
+  
+  pg.stroke(col, 100, 100);
+  pg.ellipse(width/2,height/2,(width*0.28)+xoff,(height*0.28)+yoff);
 }

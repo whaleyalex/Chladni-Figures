@@ -25,6 +25,13 @@ void ch126Draw () {
   pg.endDraw();
 }
 
+void ch126DrawOutlines () {
+  pg.beginDraw();
+  ch126CalcWave();
+  ch126RenderOutlines();
+  pg.endDraw();
+}
+
 void ch126CalcWave() {
   float f = map(ampNoise1, min1, max1, 0, ch126maxAmplitude);
   
@@ -41,13 +48,13 @@ void ch126CalcWave() {
 void ch126RenderWave() {
   //pg.pushMatrix();
   
-  pg.background(col, 100, 100);
+  pg.fill(col, 100, 100);
   pg.noStroke();
+  pg.rect(0,0,width,height);
   
   pg.translate(width/2, -(((sqrt(sq(width)+sq(height)))/2)-(height/2)) );
   pg.rotate(PI/4);
   pg.translate(-width/2,0);
-  
   
   pg.fill(oppCol, 100, 100);
   pg.beginShape();
@@ -122,4 +129,86 @@ void ch126RenderWave() {
   pg.endShape();
   
   //pg.popMatrix();
+}
+
+void ch126RenderOutlines() {
+  pg.stroke(col, 100, 100);
+  pg.strokeWeight(width/100);
+  pg.noFill();
+  
+  pg.translate(width/2, -(((sqrt(sq(width)+sq(height)))/2)-(height/2)) );
+  pg.rotate(PI/4);
+  pg.translate(-width/2,0);
+  
+  pg.stroke(oppCol, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch126yvalues.length; x++) {
+    pg.vertex(x*ch126xspacing, ((height/2)-(7*ch126spacing))-ch126yvalues[x]);
+  }
+  //pg.vertex(width,height*2);
+  //pg.vertex(0, height*2);
+  pg.endShape();
+  
+  pg.stroke(col, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch126yvalues.length; x++) {
+    pg.vertex(x*ch126xspacing, ((height/2)-(5*ch126spacing))+ch126yvalues[x]);
+  }
+  //pg.vertex(width,height*2);
+  //pg.vertex(0, height*2);
+  pg.endShape();
+  
+  pg.stroke(oppCol, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch126yvalues.length; x++) {
+    pg.vertex(x*ch126xspacing, ((height/2)-(3*ch126spacing))-ch126yvalues[x]);
+  }
+  //pg.vertex(width,height*2);
+  //pg.vertex(0, height*2);
+  pg.endShape();
+  
+  pg.stroke(col, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch126yvalues.length; x++) {
+    pg.vertex(x*ch126xspacing, ((height/2)-(ch126spacing))+ch126yvalues[x]);
+  }
+  //pg.vertex(width,height*2);
+  //pg.vertex(0, height*2);
+  pg.endShape();
+  
+  pg.stroke(oppCol, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch126yvalues.length; x++) {
+    pg.vertex(x*ch126xspacing, ((height/2)+(ch126spacing))-ch126yvalues[x]);
+  }
+  //pg.vertex(width,height*2);
+  //pg.vertex(0, height*2);
+  pg.endShape();
+  
+  pg.stroke(col, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch126yvalues.length; x++) {
+    pg.vertex(x*ch126xspacing, ((height/2)+(3*ch126spacing))+ch126yvalues[x]);
+  }
+  //pg.vertex(width,height*2);
+  //pg.vertex(0, height*2);
+  pg.endShape();
+  
+  pg.stroke(oppCol, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch126yvalues.length; x++) {
+    pg.vertex(x*ch126xspacing, ((height/2)+(5*ch126spacing))-ch126yvalues[x]);
+  }
+  //pg.vertex(width,height*2);
+  //pg.vertex(0, height*2);
+  pg.endShape();
+  
+  pg.stroke(col, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch126yvalues.length; x++) {
+    pg.vertex(x*ch126xspacing, ((height/2)+(7*ch126spacing))+ch126yvalues[x]);
+  }
+  //pg.vertex(width,height*2);
+  //pg.vertex(0, height*2);
+  pg.endShape();
 }

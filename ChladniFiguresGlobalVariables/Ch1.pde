@@ -22,6 +22,13 @@ void ch1Draw () {
   pg.endDraw();
 }
 
+void ch1DrawOutlines () {
+  pg.beginDraw();
+  ch1CalcWave();
+  ch1RenderOutlines();
+  pg.endDraw();
+}
+
 void ch1CalcWave() {
   float f = map(ampNoise1, min1, max1, 0, ch1maxAmplitude);
   
@@ -35,12 +42,8 @@ void ch1CalcWave() {
 void ch1RenderWave() {
   pg.fill(col,100,100);
   pg.rect(0,0,width,height);
-  //^Background code, add Z Value, popMatrix(); translate(0,0,0); //Background start at z value of zero and all other shapes incremented on top //OR// Place rectangle far back in Z and make large to extend past borders, 0 Z for the center of the shape
-  
-  
-  //pg.background(col, 70, 75);
   pg.noStroke();
-  
+    
   pg.fill(oppCol, 70, 75);
   pg.ellipse(width/2,height/2,width,height);
   
@@ -64,5 +67,35 @@ void ch1RenderWave() {
   circle.disableStyle();
   pg.fill(col, 70, 75);
   pg.shape(circle,0,0,width,height);
+}  
+
+void ch1RenderOutlines () {
+  pg.stroke(col, 100, 100);
+  pg.strokeWeight(width/100);
+  pg.noFill();
+
+  pg.ellipse(width/2,height/2,width,height);
   
+  pg.stroke(col, 70, 75);
+  pg.beginShape();
+  for (int y = 0; y < ch1xvalues.length; y++) {
+    pg.vertex((width/2)+ch1xvalues[y],y*ch1yspacing);
+  }
+  //pg.vertex(width/2,height);
+  //pg.vertex(width/2,0);
+  pg.endShape();
+  
+  pg.beginShape();
+  for (int y = 0; y < ch1xvalues.length; y++) {
+    pg.vertex((width/2)-ch1xvalues[y],y*ch1yspacing);
+  }
+  //pg.vertex(width/2,height);
+  //pg.vertex(width/2,0);
+  pg.endShape();
+  
+  pg.stroke(col, 70, 75);
+  pg.ellipse((width/2),(height/2),width,height);
+  //circle.disableStyle();
+  //pg.stroke(col, 70, 75);
+  //pg.shape(circle,0,0,width,height);  
 }

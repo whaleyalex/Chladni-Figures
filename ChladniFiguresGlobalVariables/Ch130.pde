@@ -26,6 +26,13 @@ void ch130Draw () {
   pg.endDraw();
 }
 
+void ch130DrawOutlines () {
+  pg.beginDraw();
+  ch130CalcWave();
+  ch130RenderOutlines();
+  pg.endDraw();
+}
+
 void ch130CalcWave() {
   
   float f = map(ampNoise1, min1, max1, 0, ch130maxAmplitude);
@@ -39,8 +46,9 @@ void ch130CalcWave() {
 }
 
 void ch130RenderWave() {
-  pg.background(col, 100, 100);
+  pg.fill(col, 100, 100);
   pg.noStroke();
+  pg.rect(0,0,width,height);
   
   pg.fill(oppCol, 100, 100);
   pg.beginShape();
@@ -94,5 +102,65 @@ void ch130RenderWave() {
   }
   pg.vertex(width,height);
   pg.vertex(0, height);
+  pg.endShape();
+}
+
+void ch130RenderOutlines() {
+  pg.stroke(col, 100, 100);
+  pg.strokeWeight(width/100);
+  pg.noFill();
+  
+  pg.stroke(oppCol, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch130yvalues.length; x++) {
+    pg.vertex(x*ch130xspacing, ((height/2)-(5*ch130spacing))+ch130yvalues[x]);
+  }
+  //pg.vertex(width,height);
+  //pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.stroke(col, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch130yvalues.length; x++) {
+    pg.vertex(x*ch130xspacing, ((height/2)-(3*ch130spacing))-ch130yvalues[x]);
+  }
+  //pg.vertex(width,height);
+  //pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.stroke(oppCol, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch130yvalues.length; x++) {
+    pg.vertex(x*ch130xspacing, ((height/2)-(ch130spacing))+ch130yvalues[x]);
+  }
+  //pg.vertex(width,height);
+  //pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.stroke(col, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch130yvalues.length; x++) {
+    pg.vertex(x*ch130xspacing, ((height/2)+ch130spacing)-ch130yvalues[x]);
+  }
+  //pg.vertex(width,height);
+  //pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.stroke(oppCol, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch130yvalues.length; x++) {
+    pg.vertex(x*ch130xspacing, ((height/2)+(3*ch130spacing))+ch130yvalues[x]);
+  }
+  //pg.vertex(width,height);
+  //pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.stroke(col, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch130yvalues.length; x++) {
+    pg.vertex(x*ch130xspacing, ((height/2)+(5*ch130spacing))-ch130yvalues[x]);
+  }
+  //pg.vertex(width,height);
+  //pg.vertex(0, height);
   pg.endShape();
 }

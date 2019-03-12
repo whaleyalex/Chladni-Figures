@@ -26,6 +26,13 @@ void ch94Draw () {
   pg.endDraw();
 }
 
+void ch94DrawOutlines () {
+  pg.beginDraw();
+  ch94CalcWave();
+  ch94RenderOutlines();
+  pg.endDraw();
+}
+
 void ch94CalcWave() {
   float f = map(ampNoise1, min1, max1, 0, ch94maxAmplitude);
   
@@ -38,8 +45,9 @@ void ch94CalcWave() {
 }
 
 void ch94RenderWave() {
-  pg.background(col, 100, 100);
+  pg.fill(col, 100, 100);
   pg.noStroke();
+  pg.rect(0,0,width,height);
   
   pg.fill(oppCol, 100, 100);
   pg.beginShape();
@@ -66,5 +74,39 @@ void ch94RenderWave() {
   }
   pg.vertex(width,height);
   pg.vertex(0, height);
+  pg.endShape();
+}
+
+void ch94RenderOutlines() {
+  pg.stroke(col, 100, 100);
+  pg.strokeWeight(width/100);
+  pg.noFill();
+  //pg.rect(0,0,width,height);
+  
+  pg.stroke(oppCol, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch94yvalues.length; x++) {
+    pg.curveVertex(x*ch94xspacing, ((height/2)-ch94spacing)-ch94yvalues[x]);
+  }
+  //pg.vertex(width,height);
+  //pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.stroke(col, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch94yvalues.length; x++) {
+    pg.vertex(x*ch94xspacing, ((height/2))+ch94yvalues[x]);
+  }
+  //pg.vertex(width,height);
+  //pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.stroke(oppCol, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch94yvalues.length; x++) {
+    pg.vertex(x*ch94xspacing, ((height/2)+ch94spacing)-ch94yvalues[x]);
+  }
+  //pg.vertex(width,height);
+  //pg.vertex(0, height);
   pg.endShape();
 }

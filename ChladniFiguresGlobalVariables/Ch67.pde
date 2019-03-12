@@ -23,6 +23,13 @@ void ch67Draw () {
   pg.endDraw();
 }
 
+void ch67DrawOutlines () {
+  pg.beginDraw();
+  ch67CalcWave();
+  ch67RenderOutlines();
+  pg.endDraw();
+}
+
 void ch67CalcWave() {
   float f = map(ampNoise1, min1, max1, 0, ch67maxAmplitude);
   
@@ -52,4 +59,22 @@ void ch67RenderWave() {
   circle.disableStyle();
   pg.fill(col, 70, 50);
   pg.shape(circle,0,0,width,height);
+}
+
+void ch67RenderOutlines() {
+  pg.stroke(col, 100, 100);
+  pg.strokeWeight(width/100);
+  pg.noFill();
+  
+  pg.stroke(oppCol, 70, 75);
+  pg.ellipse(width/2,height/2,width,height);
+  
+  pg.stroke(col, 70, 75);
+  pg.beginShape();
+  for (int x = 0; x < ch67yvalues.length; x++) {
+    pg.vertex(x*ch67xspacing,(height)-ch67yvalues[x]);
+  }
+  //pg.vertex(width,height);
+  //pg.vertex(0,height);
+  pg.endShape();
 }

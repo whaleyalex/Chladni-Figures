@@ -1,4 +1,13 @@
-//ChladniFigure137
+//ChladniFigure137 
+
+// >>>>>>>>>>FIX THIS FIGURE<<<<<<<<<<<<
+// >>>>>>>>>>FIX THIS FIGURE<<<<<<<<<<<<
+// >>>>>>>>>>FIX THIS FIGURE<<<<<<<<<<<<
+// >>>>>>>>>>FIX THIS FIGURE<<<<<<<<<<<<
+// >>>>>>>>>>FIX THIS FIGURE<<<<<<<<<<<<
+// >>>>>>>>>>FIX THIS FIGURE<<<<<<<<<<<<
+// >>>>>>>>>>FIX THIS FIGURE<<<<<<<<<<<<
+// >>>>>>>>>>FIX THIS FIGURE<<<<<<<<<<<<
 
 int ch137xspacing = 2; //how far apart for horizontal locations (wave fidelity)
 int ch137w; //width of the wave
@@ -29,6 +38,13 @@ void ch137Draw () {
   pg.beginDraw();
   ch137CalcWave();
   ch137RenderWave();
+  pg.endDraw();
+}
+
+void ch137DrawOutlines () {
+  pg.beginDraw();
+  ch137CalcWave();
+  ch137RenderOutlines();
   pg.endDraw();
 }
 
@@ -122,4 +138,11 @@ void ch137RenderWave() {
   pg.endShape();
 
   ch137horizontalNoise += 0.01;
+}
+
+void ch137RenderOutlines() {
+  pg.stroke(col, 100, 100);
+  pg.strokeWeight(width/100);
+  pg.noFill();
+  pg.rect(0,0,width,height);
 }

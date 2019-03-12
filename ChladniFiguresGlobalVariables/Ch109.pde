@@ -58,3 +58,46 @@ void ch109Draw () {
   
   pg.endDraw();
 }
+
+void ch109DrawOutlines () {
+  pg.beginDraw();
+  
+  float xOffset = map(xNoise, min6, max6, -ch109maxDisplacement, ch109maxDisplacement);
+  float yOffset = map(yNoise, min7, max7, -ch109maxDisplacement, ch109maxDisplacement);
+  
+  pg.stroke(col, 100, 100);
+  pg.strokeWeight(width/100);
+  pg.noFill();
+  //pg.rect(0,0,width,height);
+  
+  pg.rect(0,0,(width/2)+xOffset,(ch109y1)+yOffset);
+  
+  pg.stroke(oppCol, 70, 75);
+  pg.rect((width/2)+xOffset,0,width-((width/2)+xOffset),(ch109y1)+yOffset);
+  
+  pg.stroke(oppCol, 70, 75);
+  pg.rect(0,ch109y1+yOffset,(width/2)+xOffset,height*0.25);
+  
+  pg.stroke(col, 70, 75);
+  pg.rect((width/2)+xOffset,ch109y1+yOffset,width-((width/2)+xOffset),height*0.25);
+  
+  pg.stroke(col, 70, 75);
+  pg.rect(0,ch109y2+yOffset,(width/2)+xOffset,height*0.25);
+  
+  pg.stroke(oppCol, 70, 75);
+  pg.rect((width/2)+xOffset,ch109y2+yOffset,width-((width/2)+xOffset),height*0.25);
+  
+  pg.stroke(oppCol, 70, 75);
+  pg.rect(0,ch109y3+yOffset,(width/2)+xOffset,height*0.25);
+  
+  pg.stroke(col, 70, 75);
+  pg.rect((width/2)+xOffset,ch109y3+yOffset,width-((width/2)+xOffset),height*0.25);
+  
+  pg.stroke(col, 70, 75);
+  pg.rect(0,ch109y4+yOffset,(width/2)+xOffset,height-(ch109y4+yOffset));
+  
+  pg.stroke(oppCol, 70, 75);
+  pg.rect((width/2)+xOffset,ch109y4+yOffset,width-((width/2)+xOffset),height-(ch109y4+yOffset));
+  
+  pg.endDraw();
+}

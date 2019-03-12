@@ -15,7 +15,6 @@ void ch119Draw () {
   float yOffset = map(yNoise, min7, max7, -ch119maxDisplacement, ch119maxDisplacement);
   float wOffset = map(wNoise, min8, max8, -ch119widthDisplacement, ch119widthDisplacement);
   
-  //pg.background(col, 70, 75);
   pg.noStroke();
   
   pg.fill(col, 70, 75);
@@ -40,6 +39,44 @@ void ch119Draw () {
   pg.rect((width/2)+xOffset,(height/2)+yOffset,width-((width/2)+xOffset),height-((height/2)+yOffset));
   
   pg.fill(oppCol, 70, 75);
+  pg.ellipse((width*0.85)+xOffset, (height*0.75)+yOffset, (width*0.4)+wOffset, (height*0.333));
+  
+  pg.endDraw();
+}
+
+void ch119DrawOutlines () {
+  pg.beginDraw();
+  
+  pg.stroke(col, 100, 100);
+  pg.strokeWeight(width/100);
+  pg.noFill();
+  
+  float xOffset = map(xNoise, min6, max6, -ch119maxDisplacement, ch119maxDisplacement);
+  float yOffset = map(yNoise, min7, max7, -ch119maxDisplacement, ch119maxDisplacement);
+  float wOffset = map(wNoise, min8, max8, -ch119widthDisplacement, ch119widthDisplacement);
+  
+  pg.stroke(col, 70, 75);
+  pg.rect(0,0,(width/2)+xOffset,(height/2)+yOffset);
+  
+  pg.stroke(oppCol, 70, 75);
+  pg.ellipse((width*0.15)+xOffset, (height*0.25)+yOffset, (width*0.4)+wOffset, (height*0.333));
+  
+  pg.stroke(oppCol, 70, 75);
+  pg.rect((width/2)+xOffset,0,width-((width/2)+xOffset),(height/2)+yOffset);
+  
+  pg.stroke(col, 70, 75);
+  pg.ellipse((width*0.85)+xOffset, (height*0.25)+yOffset, (width*0.4)+wOffset, (height*0.333));
+  
+  pg.stroke(oppCol, 70, 75);
+  pg.rect(0,(height/2)+yOffset,(width/2)+xOffset,height-((height/2)+yOffset));
+  
+  pg.stroke(col, 70, 75);
+  pg.ellipse((width*0.15)+xOffset, (height*0.75)+yOffset, (width*0.4)+wOffset, (height*0.333));
+  
+  pg.stroke(col, 70, 75);
+  pg.rect((width/2)+xOffset,(height/2)+yOffset,width-((width/2)+xOffset),height-((height/2)+yOffset));
+  
+  pg.stroke(oppCol, 70, 75);
   pg.ellipse((width*0.85)+xOffset, (height*0.75)+yOffset, (width*0.4)+wOffset, (height*0.333));
   
   pg.endDraw();

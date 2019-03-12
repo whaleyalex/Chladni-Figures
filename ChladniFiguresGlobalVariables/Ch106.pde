@@ -26,6 +26,13 @@ void ch106Draw () {
   pg.endDraw();
 }
 
+void ch106DrawOutlines () {
+  pg.beginDraw();
+  ch106CalcWave();
+  ch106RenderOutlines();
+  pg.endDraw();
+}
+
 void ch106CalcWave() {
   float f = map(ampNoise1, min1, max1, 0, ch106maxAmplitude);
   
@@ -40,8 +47,9 @@ void ch106CalcWave() {
 }
 
 void ch106RenderWave() {  
-  pg.background(col, 100, 100);
+  pg.fill(col, 100, 100);
   pg.noStroke();
+  pg.rect(0,0,width,height);
   
   pg.fill(oppCol, 100, 100);
   pg.beginShape();
@@ -77,5 +85,48 @@ void ch106RenderWave() {
   }
   pg.vertex(width,height);
   pg.vertex(0, height);
+  pg.endShape();
+}
+
+void ch106RenderOutlines() {
+  pg.stroke(col, 100, 100);
+  pg.strokeWeight(width/100);
+  pg.noFill();
+  //pg.rect(0,0,width,height);
+  
+  pg.stroke(oppCol, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch106yvalues.length; x++) {
+    pg.vertex(x*ch106xspacing, ((height/2)-(3*ch106spacing))+ch106yvalues[x]);
+  }
+  //pg.vertex(width,height);
+  //pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.stroke(col, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch106yvalues.length; x++) {
+    pg.vertex(x*ch106xspacing, ((height/2)-ch106spacing)-ch106yvalues[x]);
+  }
+  //pg.vertex(width,height);
+  //pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.stroke(oppCol, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch106yvalues.length; x++) {
+    pg.vertex(x*ch106xspacing, ((height/2)+ch106spacing)+ch106yvalues[x]);
+  }
+  //pg.vertex(width,height);
+  //pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.stroke(col, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch106yvalues.length; x++) {
+    pg.vertex(x*ch106xspacing, ((height/2)+(3*ch106spacing))-ch106yvalues[x]);
+  }
+  //pg.vertex(width,height);
+  //pg.vertex(0, height);
   pg.endShape();
 }

@@ -13,7 +13,6 @@ float rot = 0; //angle of rotation
 float colNoise = 0.1; //noise for color of Chladni figures
 float oppCol = 0.0; //opposite value for color
 float col = 0.0; //value for the color mapped
-float zNoise = 0.2; //not implemented yet
 
 //values for the noise functions
 float amp1 = 0.0;
@@ -24,6 +23,9 @@ float amp5 = 0.4;
 float x1 = 0.5;
 float y1 = 0.6;
 float w1 = 0.7;
+
+float z1 = 0.8; //not implemented yet
+float zNoise;
 
 //noise variables to be replaced with variables from audio input. Min and max values are used for mapping. Replace with min and max for input from audio.
 float ampNoise1;
@@ -50,6 +52,8 @@ float max7 = 1;
 float wNoise;
 float min8 = 0;
 float max8 = 1;
+
+boolean fill = true; //use outlines of filled in shapes for the figures
 
 PShape circle; //circular PShape
 
@@ -103,78 +107,201 @@ void draw() {
   yNoise = noise(y1);
   wNoise = noise(w1);
   
+  zNoise = noise(z1);
+  
   switch (caseNum) { //determines which Chladni Figure is shown for which number key is pressed
     case 1:
-      ch1Draw();
+      if (fill) {
+        ch1Draw();
+      }
+      else {
+        ch1DrawOutlines();  
+      }
     break;  
     case 2:
-      ch37Draw();
+      if (fill) {
+        ch37Draw();
+      }
+      else {
+        ch37DrawOutlines();  
+      }
     break;
     case 3:
-      ch50Draw();
+      if (fill) {
+        ch50Draw();
+      }
+      else {
+        ch50DrawOutlines();  
+      }
     break;
     case 4:
-      ch62Draw();
+      if (fill) {
+        ch62Draw();
+      }
+      else {
+        ch62DrawOutlines();  
+      }
     break;
     case 5:
-      ch67Draw();
+      if (fill) {
+        ch67Draw();
+      }
+      else {
+        ch67DrawOutlines();  
+      }
     break;
     case 6:
-      ch73Draw();
+      if (fill) {
+        ch73Draw();
+      }
+      else {
+        ch73DrawOutlines();  
+      }
     break;
     case 7:
-      ch75Draw();
+      if (fill) {
+        ch75Draw();
+      }
+      else {
+        ch75DrawOutlines();  
+      }
     break;
     case 8:
-      ch89Draw();
+      if (fill) {
+        ch89Draw();
+      }
+      else {
+        ch89DrawOutlines();  
+      }
     break;
     case 9:
-      ch90Draw();
+      if (fill) {
+        ch90Draw();
+      }
+      else {
+        ch90DrawOutlines();  
+      }
     break;
     case 10:
-      ch94Draw();
+      if (fill) {
+        ch94Draw();
+      }
+      else {
+        ch94DrawOutlines();  
+      }
     break;
     case 11:
-      ch97Draw();
+      if (fill) {
+        ch97Draw();
+      }
+      else {
+        ch97DrawOutlines();  
+      }
     break;
     case 12:
-      ch106Draw();
+      if (fill) {
+        ch106Draw();
+      }
+      else {
+        ch106DrawOutlines();  
+      }
     break;
     case 13:
-      ch108Draw();
+      if (fill) {
+        ch108Draw();
+      }
+      else {
+        ch108DrawOutlines();  
+      }
     break;
     case 14:
-      ch109Draw();
+      if (fill) {
+        ch109Draw();
+      }
+      else {
+        ch109DrawOutlines();  
+      }
     break;
     case 15:
-      ch111Draw();
+      if (fill) {
+        ch111Draw();
+      }
+      else {
+        ch111DrawOutlines();  
+      }
     break;
     case 16:
-      ch113Draw();
+      if (fill) {
+        ch113Draw();
+      }
+      else {
+        ch113DrawOutlines();  
+      }
     break;
     case 17:
-      ch115Draw();
+      if (fill) {
+        ch115Draw();
+      }
+      else {
+        ch115DrawOutlines();  
+      }
     break;
     case 18:
-      ch119Draw();
+      if (fill) {
+        ch119Draw();
+      }
+      else {
+        ch119DrawOutlines();  
+      }
     break;
     case 19:
-      ch126Draw();
+      if (fill) {
+        ch126Draw();
+      }
+      else {
+        ch126DrawOutlines();  
+      }
     break;
     case 20:
-      ch130Draw();
+      if (fill) {
+        ch130Draw();
+      }
+      else {
+        ch130DrawOutlines();  
+      }
     break;
     case 21:
-      ch136Draw();
+      if (fill) {
+        ch136Draw();
+      }
+      else {
+        ch136DrawOutlines();  
+      }
     break;
     case 22:
-      ch137Draw();
+      if (fill) {
+        ch137Draw(); //NEEDS FIXED
+      }
+      else {
+        ch137Draw();//REPLACE WHEN FIXED
+        //ch137DrawOutlines();  
+      }
     break;
     case 23:
-      ch139Draw();
+      if (fill) {
+        ch139Draw();
+      }
+      else {
+        ch139DrawOutlines();  
+      }
     break;
     case 24:
-      ch141Draw();
+      if (fill) {
+        ch141Draw();
+      }
+      else {
+        ch141DrawOutlines();  
+      }
     break;
   }
   
@@ -191,6 +318,8 @@ void draw() {
   x1 +=0.01;
   y1 +=0.01;
   w1 +=0.01;
+  
+  z1++; //not implemented yet
   
   rot++;
   if (rot == 361) { //reset rotation angle
@@ -301,5 +430,11 @@ void keyPressed() { //keybinding for the Chladni figures
   }
   else if (key == 'm') {
     pg.blendMode(EXCLUSION);
+  }
+  else if (key == 'k') {
+    fill = true;  
+  }
+  else if (key == 'l') {
+    fill = false;
   }
 }

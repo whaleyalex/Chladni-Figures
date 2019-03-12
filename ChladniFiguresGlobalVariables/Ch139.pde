@@ -30,6 +30,13 @@ void ch139Draw () {
   pg.endDraw();
 }
 
+void ch139DrawOutlines () {
+  pg.beginDraw();
+  ch139CalcWave();
+  ch139RenderOutlines();
+  pg.endDraw();
+}
+
 void ch139CalcWave() {
   
   float f = map(ampNoise1, min1, max1, 0, ch139maxAmplitude);
@@ -43,8 +50,10 @@ void ch139CalcWave() {
 }
 
 void ch139RenderWave() {
-  pg.background(col, 100, 100);
+  pg.fill(col, 100, 100);
   pg.noStroke();
+  
+  pg.rect(0,0,width,height);
   
   float var = map(yNoise, min7, max7, -ch139maxPix, ch139maxPix);
   
@@ -106,5 +115,74 @@ void ch139RenderWave() {
   }
   pg.vertex(width,height);
   pg.vertex(0, height);
+  pg.endShape();
+}
+
+void ch139RenderOutlines() {
+  pg.stroke(col, 100, 100);
+  pg.strokeWeight(width/100);
+  pg.noFill();
+  //pg.rect(0,0,width,height);
+  
+  float var = map(yNoise, min7, max7, -ch139maxPix, ch139maxPix);
+  
+  pg.stroke(oppCol, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch139yvalues.length; x++) {
+    pg.vertex(x*ch139xspacing, ((height/2)-(3*ch139spacing))-ch139yvalues[x]);
+  }
+  //pg.vertex(width,height);
+  //pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.stroke(col, 100, 100);
+  pg.beginShape();
+  pg.vertex(0, (((height/2)-(2*ch139spacing))+var));
+  pg.vertex(width, (((height/2)-(2*ch139spacing))+var));
+  //pg.vertex(width,height);
+  //pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.stroke(oppCol, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch139yvalues.length; x++) {
+    pg.vertex(x*ch139xspacing, ((height/2)-ch139spacing)+ch139yvalues[x]);
+  }
+  //pg.vertex(width,height);
+  //pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.stroke(col, 100, 100);
+  pg.beginShape();
+  pg.vertex(0, ((height/2)+var));
+  pg.vertex(width, ((height/2)+var));
+  //pg.vertex(width,height);
+  //pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.stroke(oppCol, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch139yvalues.length; x++) {
+    pg.vertex(x*ch139xspacing, ((height/2)+ch139spacing)-ch139yvalues[x]);
+  }
+  //pg.vertex(width,height);
+  //pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.stroke(col, 100, 100);
+  pg.beginShape();
+  pg.vertex(0, (((height/2)+(2*ch139spacing))+var));
+  pg.vertex(width, (((height/2)+(2*ch139spacing))+var));
+  //pg.vertex(width,height);
+  //pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.stroke(oppCol, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch139yvalues.length; x++) {
+    pg.vertex(x*ch139xspacing, ((height/2)+(3*ch139spacing))+ch139yvalues[x]);
+  }
+  //pg.vertex(width,height);
+  //pg.vertex(0, height);
   pg.endShape();
 }

@@ -13,10 +13,25 @@ void ch89Draw () {
   
   float dim = map(wNoise, min8, max8, ch89lowerLimit, ch89upperLimit);
  
-  pg.background(col, 100, 100);
+  pg.fill(col, 100, 100);
   pg.noStroke();
+  pg.rect(0,0,width,height);
   
   pg.fill(oppCol, 100, 100);
+  pg.ellipse(width/2, height/2, dim, dim);
+  
+  pg.endDraw();
+}
+
+void ch89DrawOutlines () {
+  pg.beginDraw();
+  
+  pg.stroke(col, 100, 100);
+  pg.strokeWeight(width/100);
+  pg.noFill();
+  //pg.rect(0,0,width,height);
+  
+  pg.stroke(oppCol, 100, 100);
   pg.ellipse(width/2, height/2, dim, dim);
   
   pg.endDraw();
