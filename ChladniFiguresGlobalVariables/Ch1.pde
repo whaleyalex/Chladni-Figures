@@ -10,7 +10,7 @@ float ch1maxAmplitude; //max height for the wave
 
 void ch1Setup () {
   ch1period = height*2;
-  ch1maxAmplitude = height*0.1;
+  ch1maxAmplitude = height*0.25;
   ch1dy = (TWO_PI / ch1period) * ch1yspacing;
   ch1xvalues = new float[height/ch1yspacing];
 }
@@ -44,10 +44,10 @@ void ch1RenderWave() {
   pg.rect(0,0,width,height);
   pg.noStroke();
     
-  pg.fill(oppCol, 70, 75);
+  pg.fill(oppCol, 100, 100);
   pg.ellipse(width/2,height/2,width,height);
   
-  pg.fill(col, 70, 75);
+  pg.fill(col, 100, 100);
   pg.beginShape();
   for (int y = 0; y < ch1xvalues.length; y++) {
     pg.vertex((width/2)+ch1xvalues[y],y*ch1yspacing);

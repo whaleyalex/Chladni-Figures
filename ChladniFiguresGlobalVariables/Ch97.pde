@@ -12,7 +12,7 @@ float ch97spacing; //pixel spacing value for wave placement
 void ch97Setup () {
   ch97period = width * 1.3333;
   ch97spacing = height * 0.2;
-  ch97maxAmplitude = height*0.12;
+  ch97maxAmplitude = height*0.2;
   
   ch97dx = (TWO_PI / ch97period) * ch97xspacing;
   ch97yvalues = new float[width*3/ch97xspacing];

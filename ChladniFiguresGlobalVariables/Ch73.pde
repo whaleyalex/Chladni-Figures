@@ -93,7 +93,7 @@ void ch73CalcWave() {
 }
 
 void ch73RenderWave() {
-  pg.fill(col, 70, 75);
+  pg.fill(col, 100, 100);
   pg.noStroke();
   
   pg.rect(0,0,width,height);
@@ -101,7 +101,7 @@ void ch73RenderWave() {
   //pg.fill(oppCol, 70, 75);
   //pg.ellipse(width/2,height/2,width,height);
   
-  pg.fill(oppCol, 70, 75);
+  pg.fill(oppCol, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch73yvalues1.length; x++) {
     pg.vertex(x*ch73xspacing,(height*0.18)+ch73yvalues1[x]);
@@ -110,7 +110,7 @@ void ch73RenderWave() {
   pg.vertex(0,height);
   pg.endShape();
   
-  pg.fill(col, 70, 75);
+  pg.fill(col, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch73yvalues2.length; x++) {
     pg.vertex(x*ch73xspacing,(height*0.45)-ch73yvalues2[x]);
@@ -119,7 +119,7 @@ void ch73RenderWave() {
   pg.vertex(0,height);
   pg.endShape();
   
-  pg.fill(oppCol, 70, 75);
+  pg.fill(oppCol, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch73yvalues3.length; x++) {
     pg.vertex(x*ch73xspacing,(height*0.75)-ch73yvalues3[x]);
@@ -128,7 +128,7 @@ void ch73RenderWave() {
   pg.vertex(0,height);
   pg.endShape();
   
-  pg.fill(col, 70, 75);
+  pg.fill(col, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch73yvalues4.length; x++) {
     pg.vertex(x*ch73xspacing,(height)-ch73yvalues4[x]);
@@ -138,7 +138,7 @@ void ch73RenderWave() {
   pg.endShape();
   
   circle.disableStyle();
-  pg.fill(col, 70, 50);
+  pg.fill(col, 70, 70);
   pg.shape(circle,0,0,width,height);
 }
 

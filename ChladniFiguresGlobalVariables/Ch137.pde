@@ -1,13 +1,4 @@
-//ChladniFigure137 
-
-// >>>>>>>>>>FIX THIS FIGURE<<<<<<<<<<<<
-// >>>>>>>>>>FIX THIS FIGURE<<<<<<<<<<<<
-// >>>>>>>>>>FIX THIS FIGURE<<<<<<<<<<<<
-// >>>>>>>>>>FIX THIS FIGURE<<<<<<<<<<<<
-// >>>>>>>>>>FIX THIS FIGURE<<<<<<<<<<<<
-// >>>>>>>>>>FIX THIS FIGURE<<<<<<<<<<<<
-// >>>>>>>>>>FIX THIS FIGURE<<<<<<<<<<<<
-// >>>>>>>>>>FIX THIS FIGURE<<<<<<<<<<<<
+//ChladniFigure137
 
 int ch137xspacing = 2; //how far apart for horizontal locations (wave fidelity)
 int ch137w; //width of the wave
@@ -21,14 +12,13 @@ float ch137maxAmplitude; //max height for the wave
 float ch137spacing; //pixel spacing value for wave placement
 
 float ch137maxPix; //max num pixels line moves up and down
-float ch137horizontalNoise = 0.2; // noise variable for height up and down curve moves
 
 void ch137Setup () {
   ch137period = width * 0.6667;
   ch137spacing = height*0.143;
-  ch137maxAmplitude= height*0.07;
+  ch137maxAmplitude= height*0.1;
   
-  ch137maxPix = width * 0.059;
+  ch137maxPix = width * 0.1;
   
   ch137dx = (TWO_PI / ch137period) * ch137xspacing;
   ch137yvalues = new float[width/ch137xspacing];
@@ -63,10 +53,12 @@ void ch137CalcWave() {
 }
 
 void ch137RenderWave() {
-  pg.background(col, 100, 100);
+  pg.fill(col, 100, 100);
   pg.noStroke();
   
-  float var = map(noise(ch137horizontalNoise), 0, 1, -ch137maxPix, ch137maxPix);
+  pg.rect(0,0,width,height);
+  
+  float var = map(noise(wNoise), 0, 1, -ch137maxPix, ch137maxPix);
   
   pg.fill(oppCol, 100, 100);
   pg.beginShape();
@@ -77,7 +69,7 @@ void ch137RenderWave() {
   pg.vertex(0, height);
   pg.endShape();
   
-  pg.fill(oppCol, 100, 100); //CHECK THIS FIGURE <<<<<< Color??
+  pg.fill(col, 100, 100); //CHECK THIS FIGURE <<<<<< Color??
   pg.beginShape();
   for (int x = 0; x < ch137yvalues.length; x++) {
     pg.vertex(x*ch137xspacing, ((height/2)-ch137spacing)+ch137yvalues[x]);
@@ -95,7 +87,7 @@ void ch137RenderWave() {
   pg.vertex(0, height);
   pg.endShape();
   
-  pg.fill(oppCol, 100, 100);
+  pg.fill(col, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch137yvalues.length; x++) {
     pg.vertex(x*ch137xspacing, ((height/2)+(3*ch137spacing))+ch137yvalues[x]);
@@ -104,8 +96,8 @@ void ch137RenderWave() {
   pg.vertex(0, height);
   pg.endShape();
   
-  pg.colorMode(RGB);
-  pg.fill(255, 0, 0, 150);
+  //vertical rectangles
+  pg.fill(360, 100, 50, 50);
   pg.beginShape();
   pg.vertex(0, 0);
   pg.vertex((width*0.25)+var, 0);
@@ -113,7 +105,7 @@ void ch137RenderWave() {
   pg.vertex(0, height);
   pg.endShape();
   
-  pg.fill(0, 0, 255, 150);
+  pg.fill(240, 100, 50, 50);
   pg.beginShape();
   pg.vertex((width*0.25)+var, 0);
   pg.vertex((width*0.5)+var, 0);
@@ -121,7 +113,7 @@ void ch137RenderWave() {
   pg.vertex((width*0.25)+var, height);
   pg.endShape();
   
-  pg.fill(255, 0, 0, 150);
+  pg.fill(360, 100, 50, 50);
   pg.beginShape();
   pg.vertex((width*0.5)+var, 0);
   pg.vertex((width*0.75)+var, 0);
@@ -129,20 +121,90 @@ void ch137RenderWave() {
   pg.vertex((width*0.5)+var, height);
   pg.endShape();
   
-  pg.fill(0, 0, 255, 150);
+  pg.fill(240, 100, 50, 50);
   pg.beginShape();
   pg.vertex((width*0.75)+var, 0);
   pg.vertex(width, 0);
   pg.vertex(width,height);
   pg.vertex((width*0.75)+var, height);
   pg.endShape();
-
-  ch137horizontalNoise += 0.01;
 }
 
 void ch137RenderOutlines() {
   pg.stroke(col, 100, 100);
   pg.strokeWeight(width/100);
   pg.noFill();
-  pg.rect(0,0,width,height);
+  
+  //pg.rect(0,0,width,height);
+  
+  float var = map(noise(wNoise), 0, 1, -ch137maxPix, ch137maxPix);
+  
+  pg.stroke(oppCol, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch137yvalues.length; x++) {
+    pg.vertex(x*ch137xspacing, ((height/2)-(3*ch137spacing))-ch137yvalues[x]);
+  }
+  pg.vertex(width,height);
+  pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.stroke(col, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch137yvalues.length; x++) {
+    pg.vertex(x*ch137xspacing, ((height/2)-ch137spacing)+ch137yvalues[x]);
+  }
+  pg.vertex(width,height);
+  pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.stroke(oppCol, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch137yvalues.length; x++) {
+    pg.vertex(x*ch137xspacing, ((height/2)+ch137spacing)-ch137yvalues[x]);
+  }
+  pg.vertex(width,height);
+  pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.stroke(col, 100, 100);
+  pg.beginShape();
+  for (int x = 0; x < ch137yvalues.length; x++) {
+    pg.vertex(x*ch137xspacing, ((height/2)+(3*ch137spacing))+ch137yvalues[x]);
+  }
+  pg.vertex(width,height);
+  pg.vertex(0, height);
+  pg.endShape();
+  
+  //vertical rectangles
+  pg.stroke(oppCol, 100, 100);
+  pg.beginShape();
+  pg.vertex(0, 0);
+  pg.vertex((width*0.25)+var, 0);
+  pg.vertex((width*0.25)+var,height);
+  pg.vertex(0, height);
+  pg.endShape();
+  
+  pg.stroke(col, 100, 100);
+  pg.beginShape();
+  pg.vertex((width*0.25)+var, 0);
+  pg.vertex((width*0.5)+var, 0);
+  pg.vertex((width*0.5)+var,height);
+  pg.vertex((width*0.25)+var, height);
+  pg.endShape();
+  
+  pg.stroke(oppCol, 100, 100);
+  pg.beginShape();
+  pg.vertex((width*0.5)+var, 0);
+  pg.vertex((width*0.75)+var, 0);
+  pg.vertex((width*0.75)+var,height);
+  pg.vertex((width*0.5)+var, height);
+  pg.endShape();
+  
+  pg.stroke(col, 100, 100);
+  pg.beginShape();
+  pg.vertex((width*0.75)+var, 0);
+  pg.vertex(width, 0);
+  pg.vertex(width,height);
+  pg.vertex((width*0.75)+var, height);
+  pg.endShape();
 }

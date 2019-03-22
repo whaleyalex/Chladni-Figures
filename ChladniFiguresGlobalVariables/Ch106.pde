@@ -13,7 +13,7 @@ float ch106spacing; //pixel spacing value for wave placement
 void ch106Setup () {
   ch106spacing = height * 0.143;
   ch106period = width * 0.6667;
-  ch106maxAmplitude = height * 0.08;
+  ch106maxAmplitude = height * 0.16;
   
   ch106dx = (TWO_PI / ch106period) * ch106xspacing;
   ch106yvalues = new float[width/ch106xspacing];

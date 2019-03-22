@@ -13,7 +13,7 @@ void ch111Setup () {
   ch111y2 = height*0.5;
   ch111y3 = height*0.875;
   
-  ch111maxDisplacement = height*0.1;
+  ch111maxDisplacement = height*0.15;
 }
 
 void ch111Draw () {
@@ -24,55 +24,55 @@ void ch111Draw () {
   
   pg.noStroke();
   
-  pg.fill(col, 70, 75);
+  pg.fill(col, 100, 100);
   pg.rect(0,0,ch111x1+xOffset,ch111y1+yOffset);
   
-  pg.fill(oppCol, 70, 75);
+  pg.fill(oppCol, 100, 100);
   pg.rect((ch111x1)+xOffset,0,width*0.375,ch111y1+yOffset);
   
-  pg.fill(col, 70, 75);
+  pg.fill(col, 100, 100);
   pg.rect((ch111x2)+xOffset,0,width*0.375,ch111y1+yOffset);
   
-  pg.fill(oppCol, 70, 75);
+  pg.fill(oppCol, 100, 100);
   pg.rect((ch111x3)+xOffset,0,width-(ch111x3+xOffset),ch111y1+yOffset);
   
   
-  pg.fill(oppCol, 70, 75);
+  pg.fill(oppCol, 100, 100);
   pg.rect(0,ch111y1+yOffset,ch111x1+xOffset,height*0.375);
   
-  pg.fill(col, 70, 75);
+  pg.fill(col, 100, 100);
   pg.rect((ch111x1)+xOffset,ch111y1+yOffset,width*0.375,height*0.375);
   
-  pg.fill(oppCol, 70, 75);
+  pg.fill(oppCol, 100, 100);
   pg.rect((ch111x2)+xOffset,ch111y1+yOffset,width*0.375,height*0.375);
   
-  pg.fill(col, 70, 75);
+  pg.fill(col, 100, 100);
   pg.rect((ch111x3)+xOffset,ch111y1+yOffset,width-(ch111x3+xOffset),height*0.375);
   
   
-  pg.fill(col, 70, 75);
+  pg.fill(col, 100, 100);
   pg.rect(0,ch111y2+yOffset,ch111x1+xOffset,height*0.375);
   
-  pg.fill(oppCol, 70, 75);
+  pg.fill(oppCol, 100, 100);
   pg.rect((ch111x1)+xOffset,ch111y2+yOffset,width*0.375,height*0.375);
   
-  pg.fill(col, 70, 75);
+  pg.fill(col, 100, 100);
   pg.rect((ch111x2)+xOffset,ch111y2+yOffset,width*0.375,height*0.375);
   
-  pg.fill(oppCol, 70, 75);
+  pg.fill(oppCol, 100, 100);
   pg.rect((ch111x3)+xOffset,ch111y2+yOffset,width-(ch111x3+xOffset),height*0.375); 
   
   
-  pg.fill(oppCol, 70, 75);
+  pg.fill(oppCol, 100, 100);
   pg.rect(0,ch111y3+yOffset,ch111x1+xOffset,height-(ch111y3+yOffset));
   
-  pg.fill(col, 70, 75);
+  pg.fill(col, 100, 100);
   pg.rect((ch111x1)+xOffset,ch111y3+yOffset,width*0.375,height-(ch111y3+yOffset));
   
-  pg.fill(oppCol, 70, 75);
+  pg.fill(oppCol, 100, 100);
   pg.rect((ch111x2)+xOffset,ch111y3+yOffset,width*0.375,height-(ch111y3+yOffset));
   
-  pg.fill(col, 70, 75);
+  pg.fill(col, 100, 100);
   pg.rect((ch111x3)+xOffset,ch111y3+yOffset,width-(ch111x3+xOffset),height-(ch111y3+yOffset)); 
   
   
@@ -89,55 +89,55 @@ void ch111DrawOutlines () {
   pg.strokeWeight(width/100);
   pg.noFill();
   
-  pg.stroke(col, 70, 75);
+  pg.stroke(col, 100, 100);
   pg.rect(0,0,ch111x1+xOffset,ch111y1+yOffset);
   
-  pg.stroke(oppCol, 70, 75);
+  pg.stroke(oppCol, 100, 100);
   pg.rect((ch111x1)+xOffset,0,width*0.375,ch111y1+yOffset);
   
-  pg.stroke(col, 70, 75);
+  pg.stroke(col, 100, 100);
   pg.rect((ch111x2)+xOffset,0,width*0.375,ch111y1+yOffset);
   
-  pg.stroke(oppCol, 70, 75);
+  pg.stroke(oppCol, 100, 100);
   pg.rect((ch111x3)+xOffset,0,width-(ch111x3+xOffset),ch111y1+yOffset);
   
   
-  pg.stroke(oppCol, 70, 75);
+  pg.stroke(oppCol, 100, 100);
   pg.rect(0,ch111y1+yOffset,ch111x1+xOffset,height*0.375);
   
-  pg.stroke(col, 70, 75);
+  pg.stroke(col, 100, 100);
   pg.rect((ch111x1)+xOffset,ch111y1+yOffset,width*0.375,height*0.375);
   
-  pg.stroke(oppCol, 70, 75);
+  pg.stroke(oppCol, 100, 100);
   pg.rect((ch111x2)+xOffset,ch111y1+yOffset,width*0.375,height*0.375);
   
-  pg.stroke(col, 70, 75);
+  pg.stroke(col, 100, 100);
   pg.rect((ch111x3)+xOffset,ch111y1+yOffset,width-(ch111x3+xOffset),height*0.375);
   
   
-  pg.stroke(col, 70, 75);
+  pg.stroke(col, 100, 100);
   pg.rect(0,ch111y2+yOffset,ch111x1+xOffset,height*0.375);
   
-  pg.stroke(oppCol, 70, 75);
+  pg.stroke(oppCol, 100, 100);
   pg.rect((ch111x1)+xOffset,ch111y2+yOffset,width*0.375,height*0.375);
   
-  pg.stroke(col, 70, 75);
+  pg.stroke(col, 100, 100);
   pg.rect((ch111x2)+xOffset,ch111y2+yOffset,width*0.375,height*0.375);
   
-  pg.stroke(oppCol, 70, 75);
+  pg.stroke(oppCol, 100, 100);
   pg.rect((ch111x3)+xOffset,ch111y2+yOffset,width-(ch111x3+xOffset),height*0.375); 
   
   
-  pg.stroke(oppCol, 70, 75);
+  pg.stroke(oppCol, 100, 100);
   pg.rect(0,ch111y3+yOffset,ch111x1+xOffset,height-(ch111y3+yOffset));
   
-  pg.stroke(col, 70, 75);
+  pg.stroke(col, 100, 100);
   pg.rect((ch111x1)+xOffset,ch111y3+yOffset,width*0.375,height-(ch111y3+yOffset));
   
-  pg.stroke(oppCol, 70, 75);
+  pg.stroke(oppCol, 100, 100);
   pg.rect((ch111x2)+xOffset,ch111y3+yOffset,width*0.375,height-(ch111y3+yOffset));
   
-  pg.stroke(col, 70, 75);
+  pg.stroke(col, 100, 100);
   pg.rect((ch111x3)+xOffset,ch111y3+yOffset,width-(ch111x3+xOffset),height-(ch111y3+yOffset));
   
   pg.endDraw();

@@ -13,7 +13,7 @@ float ch108spacing; //pixel spacing value for wave placement
 void ch108Setup () {
   ch108period = width * 0.6667;
   ch108spacing = height * 0.125;
-  ch108maxAmplitude = height * 0.12;
+  ch108maxAmplitude = height * 0.15;
   
   ch108dx = (TWO_PI / ch108period) * ch108xspacing;
   ch108yvalues = new float[width/ch108xspacing];
@@ -43,7 +43,7 @@ void ch108CalcWave() {
     x+=ch108dx;
   }
   
-  negativeTheta -= 0.2;
+  negativeTheta -= 0.08;
 }
 
 void ch108RenderWave() {  

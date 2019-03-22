@@ -13,7 +13,7 @@ float ch94spacing; //pixel spacing value for wave placement
 void ch94Setup () {
   ch94period = width;
   ch94spacing = height*0.333;
-  ch94maxAmplitude = height*0.15;
+  ch94maxAmplitude = height*0.2;
   
   ch94dx = (TWO_PI / ch94period) * ch94xspacing;
   ch94yvalues = new float[width/ch94xspacing];
@@ -37,11 +37,13 @@ void ch94CalcWave() {
   float f = map(ampNoise1, min1, max1, 0, ch94maxAmplitude);
   
   //For every x value, calculate a y value with a sine function
-  float x = staticTheta;
+  float x = theta;
   for (int i = 0; i < ch94yvalues.length; i++) {
     ch94yvalues[i] = sin(x)*f;
     x+=ch94dx;
   }
+  
+  theta += 0.05;
 }
 
 void ch94RenderWave() {

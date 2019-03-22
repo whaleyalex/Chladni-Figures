@@ -12,7 +12,7 @@ float ch126spacing; //pixel spacing value for wave placement
 void ch126Setup () {
   ch126period = width * 0.366;
   ch126spacing = height * 0.075;
-  ch126maxAmplitude = height*0.0725;
+  ch126maxAmplitude = height*0.09;
   
   ch126dx = (TWO_PI / ch126period) * ch126xspacing;
   ch126yvalues = new float[width*3/ch126xspacing];
@@ -42,7 +42,7 @@ void ch126CalcWave() {
     x+=ch126dx;
   }
   
-  negativeTheta -= 0.2;
+  negativeTheta -= 0.15;
 }
 
 void ch126RenderWave() {

@@ -12,7 +12,7 @@ float ch90dist; //pixels from the center line
 
 void ch90Setup () {
   ch90dist = width*0.25;
-  ch90maxAmplitude = width*0.2;
+  ch90maxAmplitude = width*0.3;
   
   ch90period = height*2;
   ch90dy = (TWO_PI / ch90period) * ch90yspacing;

@@ -16,7 +16,7 @@ void ch141Setup () {
   ch141dx = (TWO_PI / ch141period) * ch141xspacing;
   ch141yvalues = new float[width/ch141xspacing];
   
-  ch141maxAmplitude = height*0.05;
+  ch141maxAmplitude = height*0.1;
   
   ch141maxDisplacement = width * 0.1;
   
@@ -58,45 +58,45 @@ void ch141RenderWave() {
   //pg.background(col, 70, 75);
   pg.noStroke();
   
-  pg.fill(col, 70, 75);
+  pg.fill(col, 100, 100);
   pg.rect(0,0,ch141x1+xOffset,(height/2)+yOffset);
   
-  pg.fill(oppCol, 70, 75);
+  pg.fill(oppCol, 100, 100);
   pg.ellipse(0+xOffset, (height/4)+yOffset, (height/4)+wOffset, height/4);
   
-  pg.fill(oppCol, 70, 75);
+  pg.fill(oppCol, 100, 100);
   pg.rect(ch141x1+xOffset,0,ch141x2-ch141x1,(height/2)+yOffset);
   
-  pg.fill(col, 70, 75);
+  pg.fill(col, 100, 100);
   pg.ellipse((width/2)+xOffset, (height/4)+yOffset, (height/4)+wOffset, height/4);
   
-  pg.fill(col, 70, 75);
+  pg.fill(col, 100, 100);
   pg.rect(ch141x2+xOffset,0,width-(ch141x2+xOffset),(height/2)+yOffset);
   
-  pg.fill(oppCol, 70, 75);
+  pg.fill(oppCol, 100, 100);
   pg.ellipse(width+xOffset, (height/4)+yOffset, (height/4)+wOffset, height/4);
   
    
-  pg.fill(oppCol, 70, 75);
-  pg.rect(0,height/2+yOffset,ch141x1+xOffset,(height/2)+yOffset);
+  pg.fill(oppCol, 100, 100);
+  pg.rect(0,height/2+yOffset,ch141x1+xOffset,(height/2)-yOffset);
   
-  pg.fill(col, 70, 75);
+  pg.fill(col, 100, 100);
   pg.ellipse(0+xOffset, (height*0.75)+yOffset, (height/4)+wOffset, height/4);
   
-  pg.fill(col, 70, 75);
-  pg.rect(ch141x1+xOffset,height/2+yOffset,ch141x2-ch141x1,(height/2)+yOffset);
+  pg.fill(col, 100, 100);
+  pg.rect(ch141x1+xOffset,height/2+yOffset,ch141x2-ch141x1,(height/2)-yOffset);
   
-  pg.fill(oppCol, 70, 75);
+  pg.fill(oppCol, 100, 100);
   pg.ellipse((width/2)+xOffset, (height*0.75)+yOffset, (height/4)+wOffset, height/4);
   
-  pg.fill(oppCol, 70, 75);
-  pg.rect(ch141x2+xOffset,height/2+yOffset,width-(ch141x2+xOffset),(height/2)+yOffset);
+  pg.fill(oppCol, 100, 100);
+  pg.rect(ch141x2+xOffset,height/2+yOffset,width-(ch141x2+xOffset),(height/2)-yOffset);
   
-  pg.fill(col, 70, 75);
+  pg.fill(col, 100, 100);
   pg.ellipse(width+xOffset, (height*0.75)+yOffset, (height/4)+wOffset, height/4);
   
   
-  pg.fill(col, 70, 50);
+  pg.fill(col, 70, 70);
   pg.beginShape();
   for (int x = 0; x < ch141yvalues.length; x++) {
     pg.vertex(x*ch141xspacing,(height*0.1)+ch141yvalues[x]);
@@ -105,7 +105,7 @@ void ch141RenderWave() {
   pg.vertex(0,0);
   pg.endShape();
   
-  pg.fill(oppCol, 70, 50);
+  pg.fill(oppCol, 70, 70);
   pg.beginShape();
   for (int x = 0; x < ch141yvalues.length; x++) {
     pg.vertex(x*ch141xspacing,(height*0.9)-ch141yvalues[x]);

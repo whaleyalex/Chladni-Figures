@@ -10,7 +10,7 @@ int ch75numOfSins1;
 float ch75maxDisplacement; //maxDisplacement for dimensions of ellipse in the center of the figure
 
 void ch75Setup () {
-  ch75maxAmplitude1 = height*0.06;
+  ch75maxAmplitude1 = height*0.08;
   ch75radius1 = height*0.45;
   ch75numOfSins1 = 6;
   
@@ -28,6 +28,13 @@ void ch75DrawOutlines () {
   pg.beginDraw();
   ch75CalcWave();
   ch75RenderOutlines();
+  pg.endDraw();
+}
+
+void ch75DrawBlue () {
+  pg.beginDraw();
+  ch75CalcWave();
+  ch75RenderBlue();
   pg.endDraw();
 }
 
@@ -84,4 +91,29 @@ void ch75RenderOutlines() {
   
   pg.stroke(col, 100, 100);
   pg.ellipse(width/2,height/2,(width*0.4)+xoff,(height*0.5)+yoff); 
+}
+
+void ch75RenderBlue() {
+  pg.fill(240, 80, 70, 50);
+  pg.noStroke();
+  
+  pg.rect(0,0,width,height);
+  
+  pg.fill(240, 80, 70, 50);
+  pg.beginShape();
+  for (int x = 0; x < ch75yvalues1.length; x++) {
+    pg.curveVertex(ch75xvalues1[x]+(width/2),ch75yvalues1[x]+(height/2));
+  }
+  pg.curveVertex(ch75xvalues1[0]+(width/2), ch75yvalues1[0]+(height/2));
+  pg.endShape();
+  
+  float xoff = map(xNoise, min6, max6, -ch75maxDisplacement, ch75maxDisplacement);
+  float yoff = map(yNoise, min7, max7, -ch75maxDisplacement, ch75maxDisplacement);
+  
+  pg.fill(240, 80, 70, 50);
+  pg.ellipse(width/2,height/2,(width*0.4)+xoff,(height*0.5)+yoff);
+  
+  //circle.disableStyle();
+  //pg.fill(oppCol, 70, 75);
+  //pg.shape(circle,0,0,width,height);
 }

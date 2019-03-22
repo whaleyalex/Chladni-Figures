@@ -16,9 +16,9 @@ void ch136Setup () {
   ch136dx = (TWO_PI / ch136period) * ch136xspacing;
   ch136yvalues = new float[width/ch136xspacing];
   
-  ch136maxAmplitude = height*0.125;
+  ch136maxAmplitude = height*0.15;
   
-  ch136maxDisplacement = width * 0.1;
+  ch136maxDisplacement = width * 0.15;
   
   ch136x1 = width*0.25;
   ch136x2 = width*0.75;
@@ -58,48 +58,48 @@ void ch136RenderWave() {
   //pg.background(col, 70, 75);
   pg.noStroke();
   
-  pg.fill(col, 70, 75);
+  pg.fill(col, 100, 100);
   pg.rect(0,0,ch136x1+xOffset,ch136y1+yOffset);
   
-  pg.fill(oppCol, 70, 75);
+  pg.fill(oppCol, 100, 100);
   pg.rect(ch136x1+xOffset,0,ch136x2-ch136x1,ch136y1+yOffset);
   
-  pg.fill(col, 70, 75);
+  pg.fill(col, 100, 100);
   pg.rect(ch136x2+xOffset,0,width-(ch136x2+xOffset),ch136y1+yOffset);
   
   
   
-  pg.fill(oppCol, 70, 75);
+  pg.fill(oppCol, 100, 100);
   pg.rect(0,ch136y1+yOffset,ch136x1+xOffset,ch136y2-ch136y1);
   
-  pg.fill(col, 70, 75);
+  pg.fill(col, 100, 100);
   pg.ellipse(0+xOffset, (height/2)+yOffset, (height/4)+wOffset, height/4);
   
-  pg.fill(col, 70, 75);
+  pg.fill(col, 100, 100);
   pg.rect(ch136x1+xOffset,ch136y1+yOffset,ch136x2-ch136x1,ch136y2-ch136y1);
   
-  pg.fill(oppCol, 70, 75);
+  pg.fill(oppCol, 100, 100);
   pg.ellipse((width/2)+xOffset, (height/2)+yOffset, (height/4)+wOffset, height/4);
   
-  pg.fill(oppCol, 70, 75);
+  pg.fill(oppCol, 100, 100);
   pg.rect(ch136x2+xOffset,ch136y1+yOffset,width-(ch136x2+xOffset), ch136y2-ch136y1);
   
-  pg.fill(col, 70, 75);
+  pg.fill(col, 100, 100);
   pg.ellipse(width+xOffset, (height/2)+yOffset, (height/4)+wOffset, height/4);
   
   
   
-  pg.fill(col, 70, 75);
+  pg.fill(col, 100, 100);
   pg.rect(0,ch136y2+yOffset,ch136x1+xOffset,height-(ch136x2+yOffset));
   
-  pg.fill(oppCol, 70, 75);
+  pg.fill(oppCol, 100, 100);
   pg.rect(ch136x1+xOffset,ch136y2+yOffset,ch136x2-ch136x1,height-(ch136x2+yOffset));
    
-  pg.fill(col, 70, 75);
+  pg.fill(col, 100, 100);
   pg.rect(ch136x2+xOffset,ch136y2+yOffset,width-(ch136x2+xOffset),height-(ch136x2+yOffset));
     
   
-  pg.fill(col, 70, 50);
+  pg.fill(col, 70, 70);
   pg.beginShape();
   for (int x = 0; x < ch136yvalues.length; x++) {
     pg.vertex(x*ch136xspacing,(height*0.125)-ch136yvalues[x]);
@@ -108,7 +108,7 @@ void ch136RenderWave() {
   pg.vertex(0,0);
   pg.endShape();
   
-  pg.fill(oppCol, 70, 50);
+  pg.fill(oppCol, 70, 70);
   pg.beginShape();
   for (int x = 0; x < ch136yvalues.length; x++) {
     pg.vertex(x*ch136xspacing,(height*0.875)+ch136yvalues[x]);

@@ -13,7 +13,7 @@ float ch115spacing; //pixel spacing value for wave placement
 void ch115Setup () {
   ch115period = width * 0.4;
   ch115spacing = height*0.2;
-  ch115maxAmplitude = height*0.1;
+  ch115maxAmplitude = height*0.13;
   
   ch115dx = (TWO_PI / ch115period) * ch115xspacing;
   ch115yvalues = new float[width/ch115xspacing];
@@ -38,11 +38,13 @@ void ch115CalcWave() {
   float f = map(ampNoise1, min1, max1, 0, ch115maxAmplitude);
   
   //For every x value, calculate a y value with a sine function
-  float x = staticTheta;
+  float x = negativeTheta;
   for (int i = 0; i < ch115yvalues.length; i++) {
     ch115yvalues[i] = sin(x)*f;
     x+=ch115dx;
   }
+  
+  negativeTheta -= 0.1;
 }
 
 void ch115RenderWave() {  

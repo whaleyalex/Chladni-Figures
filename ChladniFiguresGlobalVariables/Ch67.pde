@@ -44,10 +44,10 @@ void ch67RenderWave() {
   //pg.background(col, 70, 75);
   pg.noStroke();
   
-  pg.fill(oppCol, 70, 75);
+  pg.fill(oppCol, 100, 100);
   pg.ellipse(width/2,height/2,width,height);
   
-  pg.fill(col, 70, 75);
+  pg.fill(col, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch67yvalues.length; x++) {
     pg.vertex(x*ch67xspacing,(height)-ch67yvalues[x]);
@@ -57,7 +57,7 @@ void ch67RenderWave() {
   pg.endShape();
   
   circle.disableStyle();
-  pg.fill(col, 70, 50);
+  pg.fill(col, 70, 70);
   pg.shape(circle,0,0,width,height);
 }
 
@@ -66,10 +66,10 @@ void ch67RenderOutlines() {
   pg.strokeWeight(width/100);
   pg.noFill();
   
-  pg.stroke(oppCol, 70, 75);
+  pg.stroke(oppCol, 100, 100);
   pg.ellipse(width/2,height/2,width,height);
   
-  pg.stroke(col, 70, 75);
+  pg.stroke(col, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch67yvalues.length; x++) {
     pg.vertex(x*ch67xspacing,(height)-ch67yvalues[x]);
