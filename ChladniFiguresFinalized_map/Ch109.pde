@@ -22,7 +22,7 @@ void ch109Draw () {
   //pg.background(col, 70, 75);
   pg.noStroke();
   
-  pg.fill(col, 100, 100);
+  pg.fill(col, 100, 100,100);
   pg.rect(0,0,(widthVar/2)+xOffset,(ch109y1)+yOffset);
   
   pg.fill(oppCol, 100, 100);
@@ -32,11 +32,11 @@ void ch109Draw () {
   pg.fill(oppCol, 100, 100);
   pg.rect(0,ch109y1+yOffset,(widthVar/2)+xOffset,heightVar*0.25);
   
-  pg.fill(col, 100, 100);
+  pg.fill(col, 70, 100,100);
   pg.rect((widthVar/2)+xOffset,ch109y1+yOffset,widthVar-((widthVar/2)+xOffset),heightVar*0.25);
   
   
-  pg.fill(col, 100, 100);
+  pg.fill(col, 100, 100,100);
   pg.rect(0,ch109y2+yOffset,(widthVar/2)+xOffset,heightVar*0.25);
   
   pg.fill(oppCol, 100, 100);
@@ -46,7 +46,7 @@ void ch109Draw () {
   pg.fill(oppCol, 100, 100);
   pg.rect(0,ch109y3+yOffset,(widthVar/2)+xOffset,heightVar*0.25);
   
-  pg.fill(col, 100, 100);
+  pg.fill(col, 100, 700,100);
   pg.rect((widthVar/2)+xOffset,ch109y3+yOffset,widthVar-((widthVar/2)+xOffset),heightVar*0.25);
   
   

@@ -27,7 +27,7 @@ void ch111Draw () {
   pg.fill(col, 100, 100);
   pg.rect(0,0,ch111x1+xOffset,ch111y1+yOffset);
   
-  pg.fill(oppCol, 100, 100);
+  pg.fill(oppCol, 100, 100,10);
   pg.rect((ch111x1)+xOffset,0,widthVar*0.375,ch111y1+yOffset);
   
   pg.fill(col, 100, 100);
@@ -37,13 +37,13 @@ void ch111Draw () {
   pg.rect((ch111x3)+xOffset,0,widthVar-(ch111x3+xOffset),ch111y1+yOffset);
   
   
-  pg.fill(oppCol, 100, 100);
+  pg.fill(oppCol, 100, 100,10);
   pg.rect(0,ch111y1+yOffset,ch111x1+xOffset,heightVar*0.375);
   
   pg.fill(col, 100, 100);
   pg.rect((ch111x1)+xOffset,ch111y1+yOffset,widthVar*0.375,heightVar*0.375);
   
-  pg.fill(oppCol, 100, 100);
+  pg.fill(oppCol, 70, 100,10);
   pg.rect((ch111x2)+xOffset,ch111y1+yOffset,widthVar*0.375,heightVar*0.375);
   
   pg.fill(col, 100, 100);
@@ -53,23 +53,23 @@ void ch111Draw () {
   pg.fill(col, 100, 100);
   pg.rect(0,ch111y2+yOffset,ch111x1+xOffset,heightVar*0.375);
   
-  pg.fill(oppCol, 100, 100);
+  pg.fill(oppCol, 100, 60,100);
   pg.rect((ch111x1)+xOffset,ch111y2+yOffset,widthVar*0.375,heightVar*0.375);
   
   pg.fill(col, 100, 100);
   pg.rect((ch111x2)+xOffset,ch111y2+yOffset,widthVar*0.375,heightVar*0.375);
   
-  pg.fill(oppCol, 100, 100);
+  pg.fill(oppCol, 100, 100,10);
   pg.rect((ch111x3)+xOffset,ch111y2+yOffset,widthVar-(ch111x3+xOffset),heightVar*0.375); 
   
   
-  pg.fill(oppCol, 100, 100);
+  pg.fill(oppCol, 70, 100,30);
   pg.rect(0,ch111y3+yOffset,ch111x1+xOffset,heightVar-(ch111y3+yOffset));
   
   pg.fill(col, 100, 100);
   pg.rect((ch111x1)+xOffset,ch111y3+yOffset,widthVar*0.375,heightVar-(ch111y3+yOffset));
   
-  pg.fill(oppCol, 100, 100);
+  pg.fill(oppCol, 80, 100,70);
   pg.rect((ch111x2)+xOffset,ch111y3+yOffset,widthVar*0.375,heightVar-(ch111y3+yOffset));
   
   pg.fill(col, 100, 100);

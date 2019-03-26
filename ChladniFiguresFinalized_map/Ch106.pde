@@ -47,12 +47,12 @@ void ch106CalcWave() {
 }
 
 void ch106RenderWave() {  
-  pg.blendMode(SUBTRACT);
+  pg.blendMode(DIFFERENCE);
   pg.fill(col, 100, 100);
   pg.noStroke();
   pg.rect(0,0,widthVar,heightVar);
   
-  pg.fill(oppCol, 100, 100);
+  pg.fill(oppCol, 100, 100,100);
   pg.beginShape();
   for (int x = 0; x < ch106yvalues.length; x++) {
     pg.vertex(x*ch106xspacing, ((heightVar/2)-(3*ch106spacing))+ch106yvalues[x]);

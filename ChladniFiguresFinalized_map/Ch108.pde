@@ -47,7 +47,7 @@ void ch108CalcWave() {
 }
 
 void ch108RenderWave() {  
-  pg.fill(col, 100, 100);
+  pg.fill(col, 100, 100,100);
   pg.noStroke();
   pg.rect(0,0,widthVar,heightVar);
   
@@ -69,7 +69,7 @@ void ch108RenderWave() {
   pg.vertex(0, heightVar);
   pg.endShape();
   
-  pg.fill(oppCol, 100, 100);
+  pg.fill(oppCol, 100, 100,100);
   pg.beginShape();
   for (int x = 0; x < ch108yvalues.length; x++) {
     pg.vertex(x*ch108xspacing, ((heightVar/2)+ch108spacing)-ch108yvalues[x]);

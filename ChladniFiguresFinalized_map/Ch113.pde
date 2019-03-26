@@ -80,7 +80,7 @@ void ch113CalcWave() {
 }
 
 void ch113RenderWave() {
-  pg.fill(col, 100, 100);
+  pg.fill(map(valueenv2,0,1,0,100), 100, 100);
   pg.noStroke();
   
   pg.rect(0,0,widthVar,heightVar);
@@ -93,7 +93,7 @@ void ch113RenderWave() {
   pg.curveVertex(ch113xvalues1[0]+(widthVar/2), ch113yvalues1[0]+(heightVar/2));
   pg.endShape();
   
-  pg.fill(col, 100, 100);
+  pg.fill(map(valueenv2,0,1,0,100), 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch113yvalues2.length; x++) {
     pg.curveVertex(ch113xvalues2[x]+(widthVar/2),ch113yvalues2[x]+(heightVar/2));
@@ -115,7 +115,7 @@ void ch113RenderOutlines() {
   pg.strokeWeight(widthVar/100);
   pg.noFill();
   
-  pg.stroke(oppCol, 100, 100);
+  pg.stroke(360, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch113yvalues1.length; x++) {
     pg.curveVertex(ch113xvalues1[x]+(widthVar/2),ch113yvalues1[x]+(heightVar/2));
@@ -123,7 +123,7 @@ void ch113RenderOutlines() {
   pg.curveVertex(ch113xvalues1[0]+(widthVar/2), ch113yvalues1[0]+(heightVar/2));
   pg.endShape();
   
-  pg.stroke(col, 100, 100);
+  pg.stroke(360, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch113yvalues2.length; x++) {
     pg.curveVertex(ch113xvalues2[x]+(widthVar/2),ch113yvalues2[x]+(heightVar/2));
@@ -131,7 +131,7 @@ void ch113RenderOutlines() {
   pg.curveVertex(ch113xvalues2[0]+(widthVar/2), ch113yvalues2[0]+(heightVar/2));
   pg.endShape();
   
-  pg.stroke(oppCol, 100, 100);
+  pg.stroke(360, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch113yvalues3.length; x++) {
     pg.curveVertex(ch113xvalues3[x]+(widthVar/2),ch113yvalues3[x]+(heightVar/2));

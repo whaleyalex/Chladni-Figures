@@ -92,7 +92,7 @@ int heightVar; //height variable for figures
 PShape circle; //circular PShape
 
 void settings() {
-  fullScreen(P3D,SPAN);
+  fullScreen(P2D,SPAN);
   //fullScreen(P3D);
 }
 
@@ -170,7 +170,7 @@ void draw() {
   assignNoiseVariables();
   
   //Draw figures
-  if (counter >= 50) {
+  if (counter >= 250) {
     theta = 0.0; //postive direction movement
     negativeTheta = 0.0; //negative direction movement;
     r1 = (int)random(1,figureNumber);

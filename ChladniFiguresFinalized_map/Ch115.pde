@@ -53,7 +53,7 @@ void ch115RenderWave() {
   
   pg.rect(0,0,widthVar,heightVar);
   
-  pg.fill(oppCol, 100, 100);
+  pg.fill(map(valueenv3,0,1,0,100), 100, 100,20);
   pg.beginShape();
   for (int x = 0; x < ch115yvalues.length; x++) {
     pg.vertex(x*ch115xspacing, ((heightVar/2)-(2*ch115spacing))+ch115yvalues[x]);
@@ -71,7 +71,7 @@ void ch115RenderWave() {
   pg.vertex(0, heightVar);
   pg.endShape();
   
-  pg.fill(oppCol, 100, 100);
+ pg.fill(map(valueenv3,0,1,0,100), 100, 100,20);
   pg.beginShape();
   for (int x = 0; x < ch115yvalues.length; x++) {
     pg.vertex(x*ch115xspacing, (heightVar/2)+ch115yvalues[x]);
@@ -89,7 +89,7 @@ void ch115RenderWave() {
   pg.vertex(0, heightVar);
   pg.endShape();
   
-  pg.fill(oppCol, 100, 100);
+ pg.fill(map(valueenv3,0,1,0,100), 100, 100,20);
   pg.beginShape();
   for (int x = 0; x < ch115yvalues.length; x++) {
     pg.vertex(x*ch115xspacing, ((heightVar/2)+(2*ch115spacing))+ch115yvalues[x]);
@@ -105,7 +105,7 @@ void ch115RenderOutlines() {
   pg.noFill();
   //pg.rect(0,0,widthVar,heightVar);
   
-  pg.stroke(oppCol, 100, 100);
+  pg.stroke(100, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch115yvalues.length; x++) {
     pg.vertex(x*ch115xspacing, ((heightVar/2)-(2*ch115spacing))+ch115yvalues[x]);
@@ -114,7 +114,7 @@ void ch115RenderOutlines() {
   //pg.vertex(0, heightVar);
   pg.endShape();
   
-  pg.stroke(col, 100, 100);
+  pg.stroke(100, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch115yvalues.length; x++) {
     pg.vertex(x*ch115xspacing, ((heightVar/2)-(ch115spacing))-ch115yvalues[x]);
@@ -123,7 +123,7 @@ void ch115RenderOutlines() {
   //pg.vertex(0, heightVar);
   pg.endShape();
   
-  pg.stroke(oppCol, 100, 100);
+  pg.stroke(100, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch115yvalues.length; x++) {
     pg.vertex(x*ch115xspacing, (heightVar/2)+ch115yvalues[x]);
@@ -132,7 +132,7 @@ void ch115RenderOutlines() {
   //pg.vertex(0, heightVar);
   pg.endShape();
   
-  pg.stroke(col, 100, 100);
+  pg.stroke(100, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch115yvalues.length; x++) {
     pg.vertex(x*ch115xspacing, ((heightVar/2)+ch115spacing)-ch115yvalues[x]);
@@ -141,7 +141,7 @@ void ch115RenderOutlines() {
   //pg.vertex(0, heightVar);
   pg.endShape();
   
-  pg.stroke(oppCol, 100, 100);
+  pg.stroke(100, 100, 100);
   pg.beginShape();
   for (int x = 0; x < ch115yvalues.length; x++) {
     pg.vertex(x*ch115xspacing, ((heightVar/2)+(2*ch115spacing))+ch115yvalues[x]);

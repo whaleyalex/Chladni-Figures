@@ -45,7 +45,7 @@ void ch1RenderWave() {
   pg.rect(0,0,widthVar,heightVar);
   pg.noStroke();
     
-  pg.fill(oppCol, 100, 100);
+  pg.fill(oppCol, 100, 100,100);
   pg.ellipse(widthVar/2,heightVar/2,widthVar,heightVar);
   
   pg.fill(col, 100, 100);

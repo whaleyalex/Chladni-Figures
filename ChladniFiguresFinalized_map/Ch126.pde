@@ -132,7 +132,7 @@ void ch126RenderWave() {
 }
 
 void ch126RenderOutlines() {
-  pg.stroke(col, 100, 100);
+  pg.stroke(0, 0, 0);
   pg.strokeWeight(widthVar/100);
   pg.noFill();
   
@@ -140,7 +140,7 @@ void ch126RenderOutlines() {
   pg.rotate(PI/4);
   pg.translate(-widthVar/2,0);
   
-  pg.stroke(oppCol, 100, 100);
+  pg.stroke(0, 0, 0);
   pg.beginShape();
   for (int x = 0; x < ch126yvalues.length; x++) {
     pg.vertex(x*ch126xspacing, ((heightVar/2)-(7*ch126spacing))-ch126yvalues[x]);
@@ -149,7 +149,7 @@ void ch126RenderOutlines() {
   //pg.vertex(0, heightVar*2);
   pg.endShape();
   
-  pg.stroke(col, 100, 100);
+ pg.stroke(0, 0, 0);
   pg.beginShape();
   for (int x = 0; x < ch126yvalues.length; x++) {
     pg.vertex(x*ch126xspacing, ((heightVar/2)-(5*ch126spacing))+ch126yvalues[x]);
@@ -158,7 +158,7 @@ void ch126RenderOutlines() {
   //pg.vertex(0, heightVar*2);
   pg.endShape();
   
-  pg.stroke(oppCol, 100, 100);
+ pg.stroke(0, 0, 0);
   pg.beginShape();
   for (int x = 0; x < ch126yvalues.length; x++) {
     pg.vertex(x*ch126xspacing, ((heightVar/2)-(3*ch126spacing))-ch126yvalues[x]);
@@ -167,7 +167,7 @@ void ch126RenderOutlines() {
   //pg.vertex(0, heightVar*2);
   pg.endShape();
   
-  pg.stroke(col, 100, 100);
+ pg.stroke(0, 0, 0);
   pg.beginShape();
   for (int x = 0; x < ch126yvalues.length; x++) {
     pg.vertex(x*ch126xspacing, ((heightVar/2)-(ch126spacing))+ch126yvalues[x]);
@@ -176,7 +176,7 @@ void ch126RenderOutlines() {
   //pg.vertex(0, heightVar*2);
   pg.endShape();
   
-  pg.stroke(oppCol, 100, 100);
+ pg.stroke(0, 0, 0);
   pg.beginShape();
   for (int x = 0; x < ch126yvalues.length; x++) {
     pg.vertex(x*ch126xspacing, ((heightVar/2)+(ch126spacing))-ch126yvalues[x]);
@@ -185,7 +185,7 @@ void ch126RenderOutlines() {
   //pg.vertex(0, heightVar*2);
   pg.endShape();
   
-  pg.stroke(col, 100, 100);
+  pg.stroke(0, 0, 0);
   pg.beginShape();
   for (int x = 0; x < ch126yvalues.length; x++) {
     pg.vertex(x*ch126xspacing, ((heightVar/2)+(3*ch126spacing))+ch126yvalues[x]);
@@ -194,7 +194,7 @@ void ch126RenderOutlines() {
   //pg.vertex(0, heightVar*2);
   pg.endShape();
   
-  pg.stroke(oppCol, 100, 100);
+  pg.stroke(0, 0, 0);
   pg.beginShape();
   for (int x = 0; x < ch126yvalues.length; x++) {
     pg.vertex(x*ch126xspacing, ((heightVar/2)+(5*ch126spacing))-ch126yvalues[x]);
@@ -203,7 +203,7 @@ void ch126RenderOutlines() {
   //pg.vertex(0, heightVar*2);
   pg.endShape();
   
-  pg.stroke(col, 100, 100);
+  pg.stroke(0, 0, 0);
   pg.beginShape();
   for (int x = 0; x < ch126yvalues.length; x++) {
     pg.vertex(x*ch126xspacing, ((heightVar/2)+(7*ch126spacing))+ch126yvalues[x]);
