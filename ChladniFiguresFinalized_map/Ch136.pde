@@ -58,7 +58,7 @@ void ch136RenderWave() {
   //pg.background(col, 70, 75);
   pg.noStroke();
   
-  pg.fill(col, 100, 100);
+  pg.fill(col, 100, 100,33);
   pg.rect(0,0,ch136x1+xOffset,ch136y1+yOffset);
   
   pg.fill(oppCol, 100, 100);
@@ -69,37 +69,37 @@ void ch136RenderWave() {
   
   
   
-  pg.fill(oppCol, 100, 100);
+  pg.fill(oppCol, 100, 100,33);
   pg.rect(0,ch136y1+yOffset,ch136x1+xOffset,ch136y2-ch136y1);
   
-  pg.fill(col, 100, 100);
+  pg.fill(col, 100, 100,33);
   pg.ellipse(0+xOffset, (heightVar/2)+yOffset, (heightVar/4)+wOffset, heightVar/4);
   
-  pg.fill(col, 100, 100);
+  pg.fill(col, 100, 100,33);
   pg.rect(ch136x1+xOffset,ch136y1+yOffset,ch136x2-ch136x1,ch136y2-ch136y1);
   
-  pg.fill(oppCol, 100, 100);
+  pg.fill(oppCol, 100, 100,33);
   pg.ellipse((widthVar/2)+xOffset, (heightVar/2)+yOffset, (heightVar/4)+wOffset, heightVar/4);
   
-  pg.fill(oppCol, 100, 100);
+  pg.fill(oppCol, 100, 100,33);
   pg.rect(ch136x2+xOffset,ch136y1+yOffset,widthVar-(ch136x2+xOffset), ch136y2-ch136y1);
   
-  pg.fill(col, 100, 100);
+  pg.fill(col, 100, 100,33);
   pg.ellipse(widthVar+xOffset, (heightVar/2)+yOffset, (heightVar/4)+wOffset, heightVar/4);
   
   
   
-  pg.fill(col, 100, 100);
+  pg.fill(col, 100, 100,33);
   pg.rect(0,ch136y2+yOffset,ch136x1+xOffset,heightVar-(ch136x2+yOffset));
   
-  pg.fill(oppCol, 100, 100);
+  pg.fill(oppCol, 100, 100,33);
   pg.rect(ch136x1+xOffset,ch136y2+yOffset,ch136x2-ch136x1,heightVar-(ch136x2+yOffset));
    
-  pg.fill(col, 100, 100);
+  pg.fill(col, 100, 100,33);
   pg.rect(ch136x2+xOffset,ch136y2+yOffset,widthVar-(ch136x2+xOffset),heightVar-(ch136x2+yOffset));
     
   
-  pg.fill(col, 70, 70);
+  pg.fill(col, 70, 70,33);
   pg.beginShape();
   for (int x = 0; x < ch136yvalues.length; x++) {
     pg.vertex(x*ch136xspacing,(heightVar*0.125)-ch136yvalues[x]);
@@ -108,7 +108,7 @@ void ch136RenderWave() {
   pg.vertex(0,0);
   pg.endShape();
   
-  pg.fill(oppCol, 70, 70);
+  pg.fill(oppCol, 70, 70,33);
   pg.beginShape();
   for (int x = 0; x < ch136yvalues.length; x++) {
     pg.vertex(x*ch136xspacing,(heightVar*0.875)+ch136yvalues[x]);
@@ -138,52 +138,52 @@ void ch136RenderOutlines() {
   float yOffset = map(yNoise, min7, max7, -ch136maxDisplacement, ch136maxDisplacement);
   float wOffset = map(wNoise, min8, max8, -ch136maxDisplacement, ch136maxDisplacement);
   
-  pg.stroke(col, 100, 100);
+  pg.stroke(0, 100, 100);
   pg.strokeWeight(widthVar/100);
   pg.noFill();
    
-  pg.stroke(col, 70, 75);
+  pg.stroke(0, 70, 75);
   pg.rect(0,0,ch136x1+xOffset,ch136y1+yOffset);
   
-  pg.stroke(oppCol, 70, 75);
+  pg.stroke(0, 70, 75);
   pg.rect(ch136x1+xOffset,0,ch136x2-ch136x1,ch136y1+yOffset);
   
-  pg.stroke(col, 70, 75);
+  pg.stroke(0, 70, 75);
   pg.rect(ch136x2+xOffset,0,widthVar-(ch136x2+xOffset),ch136y1+yOffset);
   
   
   
-  pg.stroke(oppCol, 70, 75);
+  pg.stroke(0, 70, 75);
   pg.rect(0,ch136y1+yOffset,ch136x1+xOffset,ch136y2-ch136y1);
   
-  pg.stroke(col, 70, 75);
+  pg.stroke(0, 70, 75);
   pg.ellipse(0+xOffset, (heightVar/2)+yOffset, (heightVar/4)+wOffset, heightVar/4);
   
-  pg.stroke(col, 70, 75);
+  pg.stroke(0, 70, 75);
   pg.rect(ch136x1+xOffset,ch136y1+yOffset,ch136x2-ch136x1,ch136y2-ch136y1);
   
-  pg.stroke(oppCol, 70, 75);
+  pg.stroke(0, 70, 75);
   pg.ellipse((widthVar/2)+xOffset, (heightVar/2)+yOffset, (heightVar/4)+wOffset, heightVar/4);
   
-  pg.stroke(oppCol, 70, 75);
+  pg.stroke(0, 70, 75);
   pg.rect(ch136x2+xOffset,ch136y1+yOffset,widthVar-(ch136x2+xOffset), ch136y2-ch136y1);
   
-  pg.stroke(col, 70, 75);
+  pg.stroke(0, 70, 75);
   pg.ellipse(widthVar+xOffset, (heightVar/2)+yOffset, (heightVar/4)+wOffset, heightVar/4);
   
   
   
-  pg.stroke(col, 70, 75);
+  pg.stroke(0, 70, 75);
   pg.rect(0,ch136y2+yOffset,ch136x1+xOffset,heightVar-(ch136x2+yOffset));
   
-  pg.stroke(oppCol, 70, 75);
+  pg.stroke(0, 70, 75);
   pg.rect(ch136x1+xOffset,ch136y2+yOffset,ch136x2-ch136x1,heightVar-(ch136x2+yOffset));
    
-  pg.stroke(col, 70, 75);
+  pg.stroke(0, 70, 75);
   pg.rect(ch136x2+xOffset,ch136y2+yOffset,widthVar-(ch136x2+xOffset),heightVar-(ch136x2+yOffset));
     
   
-  pg.stroke(col, 70, 50);
+  pg.stroke(0, 70, 50);
   pg.beginShape();
   for (int x = 0; x < ch136yvalues.length; x++) {
     pg.vertex(x*ch136xspacing,(heightVar*0.125)-ch136yvalues[x]);
@@ -192,7 +192,7 @@ void ch136RenderOutlines() {
   //pg.vertex(0,0);
   pg.endShape();
   
-  pg.stroke(oppCol, 70, 50);
+  pg.stroke(0, 70, 50);
   pg.beginShape();
   for (int x = 0; x < ch136yvalues.length; x++) {
     pg.vertex(x*ch136xspacing,(heightVar*0.875)+ch136yvalues[x]);

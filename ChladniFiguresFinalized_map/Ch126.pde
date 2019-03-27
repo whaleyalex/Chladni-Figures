@@ -48,7 +48,7 @@ void ch126CalcWave() {
 void ch126RenderWave() {
   //pg.pushMatrix();
   
-  pg.fill(col, 100, 100);
+  pg.fill(map(valueenv2,0,1,162,310), 100, 100,map(valueenv1,0,1,0,70));
   pg.noStroke();
   pg.rect(0,0,widthVar,heightVar);
   
@@ -65,7 +65,7 @@ void ch126RenderWave() {
   pg.vertex(0, heightVar*2);
   pg.endShape();
   
-  pg.fill(col, 100, 100);
+   pg.fill(map(valueenv2,0,1,162,310), 100, 100,map(valueenv1,0,1,0,70));
   pg.beginShape();
   for (int x = 0; x < ch126yvalues.length; x++) {
     pg.vertex(x*ch126xspacing, ((heightVar/2)-(5*ch126spacing))+ch126yvalues[x]);
@@ -83,7 +83,7 @@ void ch126RenderWave() {
   pg.vertex(0, heightVar*2);
   pg.endShape();
   
-  pg.fill(col, 100, 100);
+   pg.fill(map(valueenv2,0,1,162,310), 100, 100,map(valueenv1,0,1,0,70));
   pg.beginShape();
   for (int x = 0; x < ch126yvalues.length; x++) {
     pg.vertex(x*ch126xspacing, ((heightVar/2)-(ch126spacing))+ch126yvalues[x]);
@@ -101,7 +101,7 @@ void ch126RenderWave() {
   pg.vertex(0, heightVar*2);
   pg.endShape();
   
-  pg.fill(col, 100, 100);
+   pg.fill(map(valueenv2,0,1,162,310), 100, 100,map(valueenv1,0,1,0,70));
   pg.beginShape();
   for (int x = 0; x < ch126yvalues.length; x++) {
     pg.vertex(x*ch126xspacing, ((heightVar/2)+(3*ch126spacing))+ch126yvalues[x]);
@@ -119,7 +119,7 @@ void ch126RenderWave() {
   pg.vertex(0, heightVar*2);
   pg.endShape();
   
-  pg.fill(col, 100, 100);
+   pg.fill(map(valueenv2,0,1,162,310), 100, 100,map(valueenv1,0,1,0,70));
   pg.beginShape();
   for (int x = 0; x < ch126yvalues.length; x++) {
     pg.vertex(x*ch126xspacing, ((heightVar/2)+(7*ch126spacing))+ch126yvalues[x]);

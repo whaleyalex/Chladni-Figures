@@ -39,7 +39,7 @@ void ch139DrawOutlines () {
 
 void ch139CalcWave() {
   
-  float f = map(ampNoise1, min1, max1, 0, ch139maxAmplitude);
+  float f = map(valueenv3, min1, max1, 0, ch139maxAmplitude);
   
   //For every x value, calculate a y value with a sine function
   float x = staticTheta;

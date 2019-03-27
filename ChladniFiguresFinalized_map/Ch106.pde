@@ -48,7 +48,7 @@ void ch106CalcWave() {
 
 void ch106RenderWave() {  
   pg.blendMode(DIFFERENCE);
-  pg.fill(col, 100, 100);
+  pg.fill(col, 100, 100,100);
   pg.noStroke();
   pg.rect(0,0,widthVar,heightVar);
   
@@ -61,7 +61,7 @@ void ch106RenderWave() {
   pg.vertex(0, heightVar);
   pg.endShape();
   
-  pg.fill(col, 100, 100);
+  pg.fill(col, 100, 100,100);
   pg.beginShape();
   for (int x = 0; x < ch106yvalues.length; x++) {
     pg.vertex(x*ch106xspacing, ((heightVar/2)-ch106spacing)-ch106yvalues[x]);
@@ -70,7 +70,7 @@ void ch106RenderWave() {
   pg.vertex(0, heightVar);
   pg.endShape();
   
-  pg.fill(oppCol, 100, 100);
+  pg.fill(oppCol, 100, 100,100);
   pg.beginShape();
   for (int x = 0; x < ch106yvalues.length; x++) {
     pg.vertex(x*ch106xspacing, ((heightVar/2)+ch106spacing)+ch106yvalues[x]);
@@ -79,7 +79,7 @@ void ch106RenderWave() {
   pg.vertex(0, heightVar);
   pg.endShape();
   
-  pg.fill(col, 100, 100);
+  pg.fill(col, 100, 100,100);
   pg.beginShape();
   for (int x = 0; x < ch106yvalues.length; x++) {
     pg.vertex(x*ch106xspacing, ((heightVar/2)+(3*ch106spacing))-ch106yvalues[x]);
@@ -90,12 +90,12 @@ void ch106RenderWave() {
 }
 
 void ch106RenderOutlines() {
-  pg.stroke(col, 100, 100);
+  pg.stroke(col, 100, 100,100);
   pg.strokeWeight(widthVar/100);
   pg.noFill();
   //pg.rect(0,0,widthVar,heightVar);
   
-  pg.stroke(oppCol, 100, 100);
+  pg.stroke(oppCol, 100, 100,100);
   pg.beginShape();
   for (int x = 0; x < ch106yvalues.length; x++) {
     pg.vertex(x*ch106xspacing, ((heightVar/2)-(3*ch106spacing))+ch106yvalues[x]);
@@ -104,7 +104,7 @@ void ch106RenderOutlines() {
   //pg.vertex(0, heightVar);
   pg.endShape();
   
-  pg.stroke(col, 100, 100);
+  pg.stroke(col, 100, 100,100);
   pg.beginShape();
   for (int x = 0; x < ch106yvalues.length; x++) {
     pg.vertex(x*ch106xspacing, ((heightVar/2)-ch106spacing)-ch106yvalues[x]);
@@ -113,7 +113,7 @@ void ch106RenderOutlines() {
   //pg.vertex(0, heightVar);
   pg.endShape();
   
-  pg.stroke(oppCol, 100, 100);
+  pg.stroke(oppCol, 100, 100,100);
   pg.beginShape();
   for (int x = 0; x < ch106yvalues.length; x++) {
     pg.vertex(x*ch106xspacing, ((heightVar/2)+ch106spacing)+ch106yvalues[x]);
@@ -122,7 +122,7 @@ void ch106RenderOutlines() {
   //pg.vertex(0, heightVar);
   pg.endShape();
   
-  pg.stroke(col, 100, 100);
+  pg.stroke(col, 100, 100,100);
   pg.beginShape();
   for (int x = 0; x < ch106yvalues.length; x++) {
     pg.vertex(x*ch106xspacing, ((heightVar/2)+(3*ch106spacing))-ch106yvalues[x]);

@@ -163,7 +163,7 @@ void setup() {
 
 void draw() {
   pg.colorMode(HSB,360,100,100,100);
-  col = map(noise(valueenv2), 0, 1, 200, 360);
+  col = map(valueenv2, 0, 1, 200, 360);
   oppCol = (360-col)+200; //calculate the opposite value for color
   
   //Initialize noise variables
